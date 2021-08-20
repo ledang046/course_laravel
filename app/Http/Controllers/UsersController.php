@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\User;
 use DB;
 use Hash;
 class UsersController extends Controller
@@ -15,7 +15,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = Users::orderBy("id","desc")->paginate(5);
+        $data = User::orderBy("id","desc")->paginate(5);
         return view('backend.user_read')->with(['data' => $data]);
     }
 
@@ -60,7 +60,7 @@ class UsersController extends Controller
     public function edit($id)
     {
         $action = url('admin/users');
-        $record = Users::where("id","=",$id)->first();
+        $record = User::where("id","=",$id)->first();
         return view("backend.user_create_update",["record"=>$record,"action"=>$action]);
     }
 
@@ -73,12 +73,13 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $users = Users::find($id);
+        $users = User::find($id);
         //update name
         $users->name = $request->name;
        if($request->password != ""){
                 //mã hóa password
-               $users->password = $request->password;
+               $users->password = Hash::make($request->password);
+
             }
         $users->address = $request->address;
         $users->phone = $request->phone;
@@ -92,7 +93,11 @@ class UsersController extends Controller
           //upload new file
           $image = $request->file('photo');
           $storedPath = $image->move('upload/users', $image->getClientOriginalName());
-          $users->photo = $image->getClientOriginalName();
+          
+          if($image->getClientOriginalName() != null) 
+            $users->photo = $image->getClientOriginalName(); 
+          else 
+            $users->photo = '';
 
         }
         $users->save();
@@ -107,7 +112,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        $users = Users::find($id);
+        $users = User::find($id);
         $users->delete();
         return redirect(url('admin/users'));
     }

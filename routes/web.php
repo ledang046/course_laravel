@@ -14,16 +14,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/logout', function() {
+  Auth::Logout(); 
+  return redirect(url('/login')); 
+});
 
 use App\Http\Controllers\UsersController;
 // use App\Http\Controllers\CategoriesController;
 // use App\Http\Controllers\NewsController;
 Route::group(["prefix"=>"admin"],function(){
-    Route::get('home',function(){
-        return view('backend.home');
-    });
+    Route::get('/home', [App\Http\Controllers\HomeController::class,'index'])->name('home');
+    // Route::get('home',function(){
+    //     return view('backend.home');
+    // });
     //Trang users
     Route::resource('users', UsersController::class);
     
