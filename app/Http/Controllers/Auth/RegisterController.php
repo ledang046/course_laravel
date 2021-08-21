@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'phone' => ['required', 'numeric', 'min:8'],
             'address' => ['required', 'string', 'min:3']
         ]);
+        
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserValidate;
 use DB;
 use Hash;
 class UsersController extends Controller
@@ -71,7 +72,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserValidate $request, $id)
     {
         $users = User::find($id);
         //update name
