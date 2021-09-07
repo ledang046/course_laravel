@@ -17,7 +17,11 @@ class ForgotPasswordController extends Controller
     | your application to your users. Feel free to explore this trait.
     |
     */
-
+    
+    /*
+      Linh chi tiết về class SendsPasswordResetEmails
+      https://github.com/guiwoda/laravel-framework/blob/master/src/Illuminate/Foundation/Auth/SendsPasswordResetEmails.php
+    */
     use SendsPasswordResetEmails;
     
 }

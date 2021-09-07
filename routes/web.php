@@ -15,6 +15,7 @@ use App\Http\Middleware\CheckLogin;
 
 Auth::routes();
 Route::get('/logout', function() {
+  
   Auth::Logout(); 
   return redirect(url('/login')); 
 });
@@ -35,3 +36,5 @@ Route::group(["prefix"=>"admin"],function(){
 
 
 });
+
+
