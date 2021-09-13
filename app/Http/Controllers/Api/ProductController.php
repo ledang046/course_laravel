@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         // Lấy tất cả bản ghi trong products
-        return Product::where('name', '=', 'Backend')->get();
+        return Product::all();
     }
 
     /**

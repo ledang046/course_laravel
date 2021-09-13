@@ -1,4 +1,4 @@
-@extends("backend.layout")
+@extends("layouts.layout")
 @section("do-du-lieu")
 <?php $i = 0; ?>
 <div class="col-lg-12">
@@ -37,9 +37,8 @@
 
                                                  <form style="display: inline;" action="{{ url('admin/users/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                                 @csrf
+                                                @method('DELETE')
                                                  <a class="badge badge-complete" style="color:white;" href="{{ url('admin/users/'.$rows->id.'/edit') }}"><i class="fas fa-pencil-alt"></i></a>
-                                               <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                               <input type="hidden" name="_method" value="DELETE">
                                                <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i></button>
                                               <!--  <span style="background-color:gray" class="badge badge-complete"><i class="fas fa-trash-alt"></i></span> -->
                                                   </form>

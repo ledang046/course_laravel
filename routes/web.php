@@ -1,7 +1,11 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLogin;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProductController;
+// use App\Http\Controllers\CategoriesController;
+// use App\Http\Controllers\NewsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,26 +19,23 @@ use App\Http\Middleware\CheckLogin;
 
 Auth::routes();
 Route::get('/logout', function() {
-  
-  Auth::Logout(); 
-  return redirect(url('/login')); 
+    Auth::Logout(); 
+    return redirect(url('/login')); 
 });
 
-use App\Http\Controllers\UsersController;
-// use App\Http\Controllers\CategoriesController;
-// use App\Http\Controllers\NewsController;
-Route::group(["prefix"=>"admin"],function(){
+Route::group(["prefix"=>"admin"], function() {
     Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
     // Route::get('home',function(){
     //     return view('backend.home');
     // });
-    //Trang users
-    Route::resource('users', UsersController::class);
     
-    // Route::resource('category', CategoriesController::class);
-    // Route::resource('news', NewsController::class);
+    // Users
+    Route::resource('users', UsersController::class);
 
-
+    // Product
+    Route::resource('products', ProductController::class);
+    Route::get('arrangecategory/{cate}/{type}',  [ProductController::class, 'arrangeCategory'])
+        ->name('products.arrangecategory');
 });
 
 

@@ -1,5 +1,5 @@
-<!-- load layout.blade.php vao day -->
-@extends("backend.layout")
+@extends("layouts.layout")
+
 @section("do-du-lieu")
 <div class="col-md-12">  
     <div class="panel panel-primary">

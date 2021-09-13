@@ -1,4 +1,4 @@
-@extends("backend.layout")
+@extends("layouts.layout")
 @section("do-du-lieu")
    <!-- Animated -->
             <div class="animated fadeIn">
