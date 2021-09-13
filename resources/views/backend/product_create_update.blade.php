@@ -20,27 +20,31 @@
             <!-- Name end -->
 
             <!-- Parent_id -->
+            @if(isset($data))
             <div class="row mt-3">
                 <div class="col-md-1">Course</div>
                 <div class="col-md-3">
                     <select class="custom-select" name="parent_id">
                         <option selected></option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        @foreach($data as $row)
+                        <option value="1">{{ $row->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
+            @endif
             <!-- Parent_id end -->
 
             <!-- Price & display -->
             <div class="row mt-3">
+                @if(isset($data))
                 <div class="col-md-1">Price</div>
                 <div class="col-md-3">
                     <input class="form-control" type="text" name="price" placeholder="VND" required>
                 </div>
+                @endif
                 <div class="col-md-1">Display</div>
-                <div class="col-md-3">
+                <div class="col-md-1">
                     <input type="checkbox" class="form-check-input" name="display">
                 </div>
             </div>
@@ -49,13 +53,14 @@
             <!-- Description -->
             <div class="row mt-3">
                 <div class="col-md-1">Descript</div>
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <textarea class="form-control" name ="description" rows="4"></textarea>
                 </div>
             </div>
             <!-- Description end -->
             
             <!-- Created & updated -->
+            @if(isset($data))
             <div class="row mt-3">
                 <div class="col-md-1">Created</div>
                 <div class="col-md-3">
@@ -66,11 +71,15 @@
                     <input type="datetime-local" value="" name="updated_at" class="form-control" required>
                 </div>
             </div>
+            @endif
             <!-- Created & updated end -->
               
             <!-- Button -->
             <div class="row mt-3">
-                <div class="col-md-10"></div>
+                <div class="col-md-9"></div>
+                <div class="col-md-1">
+                    <a type="button" href="{{ route('products.index') }}" class="btn ml-3 btn_create_update">Cancel</a>
+                </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn ml-3 btn_create_update">Save</button>
                 </div>

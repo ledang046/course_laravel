@@ -62,11 +62,14 @@
                         <td><?php echo e($rows->id); ?></td>
                         <td><?php echo e($rows->name); ?></td>
                         <td>
-                            <?php echo e($rows->display); ?>
-
+                            <?php if($rows->display == 1): ?>
+                                <i class="fas fa-check ml-3" style="color:green"></i>
+                            <?php else: ?>
+                                <i class="fas fa-times ml-3" style="color:red"></i>
+                            <?php endif; ?>
                         </td>
                         <td>
-                            <form style="display: inline;" action="<?php echo e(url('admin/users/'.$rows->id)); ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                            <form style="display: inline;" action="<?php echo e(url('admin/products/'.$rows->id)); ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
                                 <a class="badge badge-complete" style="color:white;" href="<?php echo e(url('admin/users/'.$rows->id.'/edit')); ?>"><i class="fas fa-pencil-alt"></i></a>

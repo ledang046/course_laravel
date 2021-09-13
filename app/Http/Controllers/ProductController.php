@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product_create_update');
+        return view('backend.product_create_update', );
     }
 
     /**
@@ -54,7 +54,13 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $product          = new Product;
+        $product->name    = $request->input('name');
+        $product->parent_id    = 0;
+        $product->description = $request->input('description');
+        $product->display = $request->has('display') ? 1 : 0;
+        $product->save();
+        return redirect(route('products.index')); 
     }
 
     /**
@@ -99,6 +105,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deletedProducts = Product::where('id', '=', $id)->delete();
+        return redirect(route('products.index')); 
     }
 }

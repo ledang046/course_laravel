@@ -62,10 +62,14 @@
                         <td>{{ $rows->id }}</td>
                         <td>{{ $rows->name }}</td>
                         <td>
-                            {{ $rows->display }}
+                            @if($rows->display == 1)
+                                <i class="fas fa-check ml-3" style="color:green"></i>
+                            @else
+                                <i class="fas fa-times ml-3" style="color:red"></i>
+                            @endif
                         </td>
                         <td>
-                            <form style="display: inline;" action="{{ url('admin/users/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                            <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                 @csrf
                                 @method('DELETE')
                                 <a class="badge badge-complete" style="color:white;" href="{{ url('admin/users/'.$rows->id.'/edit') }}"><i class="fas fa-pencil-alt"></i></a>
