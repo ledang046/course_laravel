@@ -1,7 +1,7 @@
 @extends("layouts.layout")
 
 @section("do-du-lieu")
-<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/product.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/category.css') }}">
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -10,7 +10,7 @@
                     <strong class="card-title" >Course manager</strong>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a class="btn-add py-1 px-3" href="{{ route('products.create') }}">
+                    <a class="btn-add py-1 px-3" href="{{ route('categories.create') }}">
                         <i class="fas fa-plus"></i> Create
                     </a>
                 </div>
@@ -69,10 +69,15 @@
                             @endif
                         </td>
                         <td>
-                            <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                            <form style="display: inline;" action="{{ url('admin/categories/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                 @csrf
                                 @method('DELETE')
-                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/users/'.$rows->id.'/edit') }}"><i class="fas fa-pencil-alt"></i></a>
+                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/categories/'.$rows->id) }}">
+                                    <i class="fas fa-bars"></i>
+                                </a>
+                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/categories/'.$rows->id.'/edit') }}">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </a>
                                 <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>  
