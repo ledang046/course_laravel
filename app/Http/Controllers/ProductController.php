@@ -43,7 +43,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.product_create_update', );
+        return view('backend.category_create_update', ['nameType' => 'product']);
     }
 
     /**

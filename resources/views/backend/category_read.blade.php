@@ -10,7 +10,7 @@
                     <strong class="card-title" >Course manager</strong>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a class="btn-add py-1 px-3" href="{{ route('categories.create') }}">
+                    <a class="btn-add py-1 px-3" href="{{ ($nameType == 'category') ? route('categories.create') : route('products.create') }}">
                         <i class="fas fa-plus"></i> Create
                     </a>
                 </div>
@@ -53,6 +53,19 @@
                                 </div>
                             </div>
                         </th>
+                        @if($nameType == 'product')
+                        <th>
+                            <div class="dropdown">
+                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Price
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/display/desc') }}">Desc</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/display/asc') }}">Asc</a>
+                                </div>
+                            </div>
+                        </th>
+                        @endif
                         <th></th>
                     </tr>
                 </thead>
@@ -68,14 +81,21 @@
                                 <i class="fas fa-times ml-3" style="color:red"></i>
                             @endif
                         </td>
+                        @if($nameType == 'product')
+                        <td>
+                            {{ number_format($rows->price) }} VND
+                        </td>
+                        @endif
                         <td>
                             <form style="display: inline;" action="{{ url('admin/categories/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                 @csrf
                                 @method('DELETE')
-                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/categories/'.$rows->id) }}">
-                                    <i class="fas fa-bars"></i>
-                                </a>
-                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/categories/'.$rows->id.'/edit') }}">
+                                @if($nameType == 'category')
+                                    <a class="badge badge-complete" style="color:white;" href="{{ url('admin/categories/'.$rows->id) }}">
+                                        <i class="fas fa-bars"></i>
+                                    </a>
+                                @endif
+                                <a class="badge badge-complete" style="color:white;" href="{{ ($nameType == 'category') ? url('admin/categories/'.$rows->id.'/edit') : url('admin/products/'.$rows->id.'/edit') }}">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>

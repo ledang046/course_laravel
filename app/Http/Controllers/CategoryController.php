@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $data = Category::select('id', 'name', 'display')
             ->orderBy("id","desc")
             ->paginate(5);
-        return view('backend.category_read', ["data" => $data]);
+        return view('backend.category_read', ["data" => $data, 'nameType' => 'category']);
     }
 
     /**
@@ -52,11 +52,11 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $product          = new Category;
-        $product->name    = $request->input('name');
-        $product->description = $request->input('description');
-        $product->display = $request->has('display') ? 1 : 0;
-        $product->save();
+        $category              = new Category;
+        $category->name        = $request->input('name');
+        $category->description = $request->input('description');
+        $category->display     = $request->has('display') ? 1 : 0;
+        $category->save();
         return redirect(route('categories.index')); 
     }
 
@@ -68,7 +68,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Category::find($id)->products()->paginate(5);
+        return view('backend.category_read', ["data" => $data, 'nameType' => 'product']);
     }
 
     /**
@@ -92,7 +93,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category              = Category::find($id);
+        $category->name        = $request->input('name');
+        $category->description = $request->input('description');
+        $category->display     = $request->has('display') ? 1 : 0;
+        $category->created_at  = $request->input('created_at');
+        $category->save();
+        return redirect(route('categories.index'));
     }
 
     /**

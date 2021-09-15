@@ -8,8 +8,21 @@
             <h1>Products</h1>
         </div>
         <div class="panel-body">
-        <form method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data">
+        @php
+            if(isset($record) && $nameType == 'category')
+                $action = url('admin/categories/'.$record->id);
+            else if(isset($record) == false && $nameType == 'category')
+                $action = route('categories.store');
+            else if(isset($record) == false && $nameType == 'product')
+                $action = route('products.store');
+            else 
+                $action = url('admin/products/'.$record->id);
+        @endphp
+        <form method="post" action="{{ $action }}" enctype="multipart/form-data">
             @csrf
+            @if(isset($record))
+                @method('PUT')
+            @endif
             <!-- Name -->
             <div class="row mt-3">
                 <div class="col-md-1">Name</div>
@@ -25,7 +38,7 @@
             <!-- Name end -->
 
             <!-- Parent_id -->
-            @if(isset($record) && $nameType == 'product')
+            @if($nameType == '')
             <div class="row mt-3">
                 <div class="col-md-1">Course</div>
                 <div class="col-md-3">
@@ -74,6 +87,19 @@
             </div>
             <!-- Description end -->
 
+            <!-- Content -->
+            @if($nameType == 'product')
+            <div class="row mt-3">
+                <div class="col-md-1">Content</div>
+                <div class="col-md-7">
+                    <textarea class="form-control" name ="description" rows="6">
+                    {{ isset($record->content) ? trim($record->content) : '' }}
+                    </textarea>
+                </div>
+            </div>
+            @endif
+            <!-- Description end -->
+
             <!-- Created & updated -->
             @if(isset($record))
             <div class="row mt-3">
@@ -98,7 +124,7 @@
             <div class="row mt-3">
                 <div class="col-md-9"></div>
                 <div class="col-md-1">
-                    <a type="button" href="{{ route('categories.index') }}" class="btn ml-3 btn_create_update">Cancel</a>
+                    <a type="button" href="{{ ($nameType == 'category') ? route('categories.index') : route('products.index') }}" class="btn ml-3 btn_create_update">Cancel</a>
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn ml-3 btn_create_update">Save</button>
