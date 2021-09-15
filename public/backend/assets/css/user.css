@@ -1,0 +1,7 @@
+.btn_arrange{
+    font-size: 12px;
+    background:none;
+    text-transform: uppercase;
+    transform: translateY(); 
+    padding: 0;
+}

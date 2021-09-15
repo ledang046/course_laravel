@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Http\Requests\UserValidate;
 use DB;
 use Hash;
+use Illuminate\Support\Facades\Hash as FacadesHash;
+
 class UsersController extends Controller
 {
     /**
@@ -20,6 +22,13 @@ class UsersController extends Controller
         return view('backend.user_read')->with(['data' => $data]);
     }
 
+    // Sắp xếp user theo name
+    public function arrangeUser($cate, $type)
+    {
+        $data = User::orderBy($cate,$type)
+            ->paginate(5);
+        return view('backend.user_read', ["data" => $data]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -79,8 +88,7 @@ class UsersController extends Controller
         $users->name = $request->name;
        if($request->password != ""){
                 //mã hóa password
-               $users->password = Hash::make($request->password);
-
+               $users->password = FacadesHash::make($request->password);
             }
         $users->address = $request->address;
         $users->phone = $request->phone;
