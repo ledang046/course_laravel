@@ -570,10 +570,7 @@ class ComposerStaticInit1ac8f5d281b28ea17d061e2b44c60d31
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Requests\\UserValidate' => __DIR__ . '/../..' . '/app/Http/Requests/UserValidate.php',
         'App\\Http\\Resources\\Product' => __DIR__ . '/../..' . '/app/Http/Resources/Product.php',
-<<<<<<< HEAD
-=======
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
->>>>>>> 70e555b16424655a2566eb2faeab6bc0bb8f05ea
         'App\\Models\\Product' => __DIR__ . '/../..' . '/app/Models/Product.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
