@@ -3,8 +3,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckLogin;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProductController;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\CategoriesController;
+=======
+use App\Http\Controllers\CategoryController;
+>>>>>>> 70e555b16424655a2566eb2faeab6bc0bb8f05ea
 // use App\Http\Controllers\NewsController;
 
 /*
@@ -37,6 +41,11 @@ Route::group(["prefix"=>"admin"], function() {
     // Product
     Route::resource('products', ProductController::class);
     Route::get('arrangecategory/{cate}/{type}',  [ProductController::class, 'arrangeCategory'])
+        ->name('products.arrangecategory');
+
+    // Category
+    Route::resource('categories', CategoryController::class);
+    Route::get('arrangecategory/{cate}/{type}',  [CategoryController::class, 'arrangeCategory'])
         ->name('products.arrangecategory');
 });
 

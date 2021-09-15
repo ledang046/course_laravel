@@ -17,10 +17,126 @@ class ProductSeeder extends Seeder
     {
         // Thêm dữ liệu vào bảng products
         DB::table('products')->insert([
-           ['name' => 'Frontend', 'parent_id' => 0, 'price' => 300000, 'description' => Str::random(255), 'display' => 1],
-           ['name' => 'Backend', 'parent_id' => 0, 'price' => 400000, 'description' => Str::random(255), 'display' => 1],
-           ['name' => 'Tester', 'parent_id' => 0, 'price' => 500000, 'description' => Str::random(255), 'display' => 1],
-           ['name' => 'Data Engine', 'parent_id' => 0, 'price' => 600000, 'description' => Str::random(255), 'display' => 1],
+            [
+                'name' => 'HTML & CSS', 
+                'parent_id' => 1, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Javascript', 
+                'parent_id' => 1, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'ReactJS', 
+                'parent_id' => 1, 
+                'price' => 400000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'VueJS', 
+                'parent_id' => 1, 
+                'price' => 400000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Angular', 
+                'parent_id' => 1, 
+                'price' => 500000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'PHP', 
+                'parent_id' => 2, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'NodeJS', 
+                'parent_id' => 2, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Python', 
+                'parent_id' => 2, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Java', 
+                'parent_id' => 2, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Manual Test', 
+                'parent_id' => 3, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Automatic Test', 
+                'parent_id' => 3, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'SQL Server', 
+                'parent_id' => 4, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'My Sql', 
+                'parent_id' => 4, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Postgresql', 
+                'parent_id' => 4, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
+            [
+                'name' => 'Oracle', 
+                'parent_id' => 4, 
+                'price' => 300000, 
+                'description' => Str::random(255), 
+                'content' => '', 
+                'display' => 1
+            ],
         ]);
     }
 }

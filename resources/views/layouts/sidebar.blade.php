@@ -8,7 +8,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('products.index') }}">
+        <a href="{{ route('categories.index') }}">
             <i class="menu-icon fas fa-list-ul"></i></i>Courses 
         </a>
     </li>

@@ -8,7 +8,7 @@
         </a>
     </li>
     <li>
-        <a href="<?php echo e(route('products.index')); ?>">
+        <a href="<?php echo e(route('categories.index')); ?>">
             <i class="menu-icon fas fa-list-ul"></i></i>Courses 
         </a>
     </li>
