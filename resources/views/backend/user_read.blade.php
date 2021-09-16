@@ -1,6 +1,7 @@
 @extends("layouts.layout")
 @section("do-du-lieu")
 <?php $i = 0; ?>
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/user.css') }}">
 <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
@@ -10,9 +11,27 @@
                                 <table class="table ">
                                     <thead>
                                         <tr>
-                                           	<th class="serial">#</th>
+                                           	<th style="width: 50px;" class="serial" > 
+                                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Id
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/id/asc') }}">asc</a>
+                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/id/desc') }}">desc</a>
+                                                </div>
+                                            </th>
                                             <th class="avatar">Avatar</th>
-                                            <th style="width: 180px;">Name</th>
+                                            <th style="width: 180px;">
+                                            <div class="dropdown">
+                                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Name
+                                                </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/name/asc') }}">A-Z</a>
+                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/name/desc') }}">Z-A</a>
+                                                </div>
+                                            </div>
+                                            </th>
                                             <th>Email</th>
                                             <th>Address</th>
                                             <th>Phone</th>
@@ -22,8 +41,8 @@
                                     <tbody>
                                          @foreach($data as $rows)
                                         <tr>
-                                            <td class="serial"> 
-											<?php echo ++$i;?>.</td>
+                                
+											<td>{{ $rows->id}}.</td>
                                             <td class="avatar">
                                                 <div class="round-img">
                                                     <a href="#"><img style="width: 100%;" class="rounded-circle" src="{{asset('backend/images/avatar/'.$rows->photo)}}" alt=""></a>
@@ -52,18 +71,11 @@
                             </div> <!-- /.table-stats -->
                         </div>
                         <nav aria-label="Page navigation example">
-  <ul class="pagination justify-content-center">
-    <li class="page-item">
-      <a class="page-link" href="#"><i class="fas fa-chevron-left"></i></a>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-    </li>
-  </ul>
-</nav>
+                        <ul class="pagination justify-content-center">
+                        {{ $data->links() }}
+
+                        </ul>
+                        </nav>
                     </div>
 
 @endsection

@@ -9,7 +9,7 @@
     </li>
     <li>
         <a href="{{ route('categories.index') }}">
-            <i class="menu-icon fas fa-list-ul"></i></i>Courses 
+        <i class="menu-icon fas fa-book"></i></i>Courses 
         </a>
     </li>
     <li class="menu-item-has-children dropdown">

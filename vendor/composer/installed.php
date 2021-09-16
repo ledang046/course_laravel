@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'bd163ea37b2e71ab6e598e98bfe8a8ac57a0c9ac',
+        'reference' => '3faff1795e5830ab08eec6660fa6f2a6819b8e13',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -68,12 +68,12 @@
             'dev_requirement' => false,
         ),
         'doctrine/dbal' => array(
-            'pretty_version' => '3.1.1',
-            'version' => '3.1.1.0',
+            'pretty_version' => '3.1.2',
+            'version' => '3.1.2.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/dbal',
             'aliases' => array(),
-            'reference' => '8e0fde2b90e3f61361013d1e928621beeea07bc0',
+            'reference' => '3ee2622b57370c786f531678f6641208747f7bfc',
             'dev_requirement' => false,
         ),
         'doctrine/deprecations' => array(
@@ -445,7 +445,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'bd163ea37b2e71ab6e598e98bfe8a8ac57a0c9ac',
+            'reference' => '3faff1795e5830ab08eec6660fa6f2a6819b8e13',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
