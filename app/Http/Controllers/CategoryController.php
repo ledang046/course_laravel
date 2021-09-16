@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $data = Category::select('id', 'name', 'display')
             ->orderBy("id","desc")
             ->paginate(5);
-        return view('backend.category_read', ["data" => $data, 'nameType' => 'category']);
+        return view('backend.category_read', ["data" => $data]);
     }
 
     /**
@@ -41,7 +41,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.category_create_update', ['nameType' => 'category']);
+        $action = route('categories.store');
+        return view('backend.category_create_update', ['action' => $action]);
     }
 
     /**
@@ -69,7 +70,7 @@ class CategoryController extends Controller
     public function show($id)
     {
         $data = Category::find($id)->products()->paginate(5);
-        return view('backend.category_read', ["data" => $data, 'nameType' => 'product']);
+        return view('backend.product_read', ["data" => $data, "id" => $id]);
     }
 
     /**
@@ -81,7 +82,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::find($id);
-        return view('backend.category_create_update', ['record' => $category, 'nameType' => 'category']);
+        $action = url('admin/categories/'.$category->id);
+        return view('backend.category_create_update', ['record' => $category, 'action' => $action]);
     }
 
     /**

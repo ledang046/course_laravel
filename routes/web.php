@@ -34,13 +34,13 @@ Route::group(["prefix"=>"admin"], function() {
 
     // Product
     Route::resource('products', ProductController::class);
-    Route::get('arrangecategory/{cate}/{type}',  [ProductController::class, 'arrangeCategory'])
-        ->name('products.arrangecategory');
+    Route::get('arrangeproduct/{cate_id}/{cate}/{type}',  [ProductController::class, 'arrangeProduct'])
+        ->name('products.arrangeproduct');
 
     // Category
     Route::resource('categories', CategoryController::class);
     Route::get('arrangecategory/{cate}/{type}',  [CategoryController::class, 'arrangeCategory'])
-        ->name('products.arrangecategory');
+        ->name('categories.arrangecategory');
 });
 
 

@@ -1,7 +1,7 @@
+@extends("layouts.layout")
 
-
-<?php $__env->startSection("do-du-lieu"); ?>
-<link rel="stylesheet" type="text/css" href="<?php echo e(asset('backend/assets/css/category.css')); ?>">
+@section("do-du-lieu")
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/category.css') }}">
 <div class="col-lg-12">
     <div class="card">
         <div class="card-header">
@@ -10,7 +10,7 @@
                     <strong class="card-title" >Course manager</strong>
                 </div>
                 <div class="col-md-2 text-right">
-                    <a class="btn-add py-1 px-3" href="<?php echo e(route('products.create')); ?>">
+                    <a class="btn-add py-1 px-3" href="{{ route('products.create') }}">
                         <i class="fas fa-plus"></i> Create
                     </a>
                 </div>
@@ -26,8 +26,8 @@
                                     Id
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/id/asc')); ?>">Asc</a>
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/id/desc')); ?>">Desc</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/id/asc') }}">Asc</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/id/desc') }}">Desc</a>
                                 </div>
                             </div>
                         </th>
@@ -37,8 +37,8 @@
                                     Name
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/name/asc')); ?>">A-Z</a>
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/name/desc')); ?>">Z-A</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/name/asc') }}">A-Z</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/name/desc') }}">Z-A</a>
                                 </div>
                             </div>
                         </th>
@@ -48,8 +48,8 @@
                                     Display
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/display/desc')); ?>">Display</a>
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/display/asc')); ?>">Undisplayed</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/display/desc') }}">Display</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/display/asc') }}">Undisplayed</a>
                                 </div>
                             </div>
                         </th>
@@ -59,8 +59,8 @@
                                     Price
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/price/desc')); ?>">Desc</a>
-                                    <a class="dropdown-item" href="<?php echo e(url('admin/arrangeproduct/'.$id.'/price/asc')); ?>">Asc</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/price/desc') }}">Desc</a>
+                                    <a class="dropdown-item" href="{{ url('admin/arrangeproduct/'.$id.'/price/asc') }}">Asc</a>
                                 </div>
                             </div>
                         </th>
@@ -68,25 +68,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rows): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    @foreach($data as $rows)
                     <tr>
-                        <td><?php echo e($rows->id); ?></td>
-                        <td><?php echo e($rows->name); ?></td>
+                        <td>{{ $rows->id }}</td>
+                        <td>{{ $rows->name }}</td>
                         <td>
-                            <?php if($rows->display == 1): ?>
+                            @if($rows->display == 1)
                                 <i class="fas fa-check ml-3" style="color:green"></i>
-                            <?php else: ?>
+                            @else
                                 <i class="fas fa-times ml-3" style="color:red"></i>
-                            <?php endif; ?>
+                            @endif
                         </td>
                         <td>
-                            <?php echo e(number_format($rows->price)); ?> VND
+                            {{ number_format($rows->price) }} VND
                         </td>
                         <td>
-                            <form style="display: inline;" action="<?php echo e(url('admin/products/'.$rows->id)); ?>" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
-                                <?php echo csrf_field(); ?>
-                                <?php echo method_field('DELETE'); ?>
-                                <a class="badge badge-complete" style="color:white;" href="<?php echo e(url('admin/products/'.$rows->id.'/edit')); ?>">
+                            <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                                @csrf
+                                @method('DELETE')
+                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/products/'.$rows->id.'/edit') }}">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
                                 <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>
@@ -94,7 +94,7 @@
                             </form>  
                         </td>
                     </tr> 
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    @endforeach
                 </tbody>
             </table>
         </div> 
@@ -113,14 +113,12 @@
       </ul>
     </nav>
 </div>
-<?php $__env->stopSection(); ?>
+@endsection
 
-<?php $__env->startSection('add-ajax'); ?>
+@section('add-ajax')
 <script type="text/javascript" language="javascript">
     
 </script>
-<?php $__env->stopSection(); ?>
+@endsection
 
 
-
-<?php echo $__env->make("layouts.layout", \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\course_laravel\resources\views/backend/product_read.blade.php ENDPATH**/ ?>

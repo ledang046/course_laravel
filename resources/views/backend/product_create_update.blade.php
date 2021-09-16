@@ -27,8 +27,17 @@
             </div>
             <!-- Name end -->
 
-            <!-- Display -->
+            <!-- Display & price-->
             <div class="row mt-3">
+                <div class="col-md-1">Price</div>
+                <div class="col-md-3">
+                    <input type="text" 
+                        value="{{ isset($record->price) ? $record->price:'' }}" 
+                        name="price" 
+                        class="form-control" 
+                        required
+                    >
+                </div>
                 <div class="col-md-1">Display</div>
                 <div class="col-md-1">
                     <input type="checkbox" 
@@ -42,7 +51,24 @@
                     >
                 </div>
             </div>
-            <!-- Display end-->
+            <!-- Display & price end-->
+
+            <!-- Parent_id-->
+            <div class="row mt-3">
+                <div class="col-md-1">Project</div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label=".form-select-lg example" name="parent_id">
+                      @foreach($category as $rows)
+                          <option value="{{ $rows->id }}" 
+                              {{ isset($record->parent_id) && ($rows->id==$record->parent_id) ? 'selected' : '' }}
+                           >
+                            {{ $rows->name }}
+                           </option>
+                      @endforeach
+                    </select>
+                </div>
+            </div>
+            <!-- Parend_id end -->
     
             <!-- Description -->
             <div class="row mt-3">
@@ -50,6 +76,17 @@
                 <div class="col-md-7">
                     <textarea class="form-control" name ="description" rows="4">
                     {{ isset($record->description) ? trim($record->description) : '' }}
+                    </textarea>
+                </div>
+            </div>
+            <!-- Description end -->
+
+            <!-- Description -->
+            <div class="row mt-3">
+                <div class="col-md-1">Content</div>
+                <div class="col-md-7">
+                    <textarea class="form-control" name ="content" rows="4">
+                    {{ isset($record->content) ? trim($record->content) : '' }}
                     </textarea>
                 </div>
             </div>
