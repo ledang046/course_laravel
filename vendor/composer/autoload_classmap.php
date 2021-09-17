@@ -30,10 +30,7 @@ return array(
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Requests\\UserValidate' => $baseDir . '/app/Http/Requests/UserValidate.php',
     'App\\Http\\Resources\\Product' => $baseDir . '/app/Http/Resources/Product.php',
-<<<<<<< HEAD
-=======
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
->>>>>>> 70e555b16424655a2566eb2faeab6bc0bb8f05ea
     'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
@@ -146,6 +143,8 @@ return array(
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
     'Database\\Seeders\\CategoriesTableSeeder' => $baseDir . '/database/seeders/CategoriesTableSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
+    'Database\\Seeders\\DeleteProductsSeeder' => $baseDir . '/database/seeders/DeleteProductsSeeder.php',
+    'Database\\Seeders\\DiscountSeeder' => $baseDir . '/database/seeders/DiscountSeeder.php',
     'Database\\Seeders\\ProductSeeder' => $baseDir . '/database/seeders/ProductSeeder.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
