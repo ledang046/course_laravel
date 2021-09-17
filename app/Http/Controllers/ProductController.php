@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -27,13 +28,13 @@ class ProductController extends Controller
      *
      * return data được sắp xếp
      */
-    public function arrangeCategory($cate, $type)
+    public function arrangeProduct($cate_id, $cate, $type)
     {
-        $data = Product::where('parent_id', '=', 0)
-            ->select('id', 'name', 'display')
+        $data = Product::where('parent_id', '=', $cate_id)
+            ->select('id', 'name', 'display', 'price')
             ->orderBy($cate,$type)
             ->paginate(5);
-        return view('backend.product_read', ["data" => $data]);
+        return view('backend.product_read', ["data" => $data, "id" => $cate_id]);
     }
 
     /**
@@ -43,7 +44,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('backend.category_create_update', ['nameType' => 'product']);
+        $category = Category::all();
+        $action = route('products.store');
+        return view('backend.product_create_update', ['action' => $action, 'category' => $category]);
     }
 
     /**
@@ -54,13 +57,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product          = new Product;
-        $product->name    = $request->input('name');
-        $product->parent_id    = 0;
-        $product->description = $request->input('description');
-        $product->display = $request->has('display') ? 1 : 0;
+        $product              = new Product;
+        $product->name        = $request->name;
+        $product->parent_id   = $request->parent_id;
+        $product->price       = $request->price;
+        $product->description = $request->description;
+        $product->content = $request->content;
+        $product->display     = $request->has('display') ? 1 : 0;
         $product->save();
-        return redirect(route('products.index')); 
+        return redirect(url('admin/categories/'.$request->parent_id));
     }
 
     /**
@@ -82,7 +87,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::find($id);
+        $category = Category::all();
+        $action = url('admin/products/'.$product->id);
+        return view('backend.product_create_update', ['category' => $category,'record' => $product, 'action' => $action]);
     }
 
     /**
@@ -94,7 +102,16 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product              = Product::find($id);
+        $product->name        = $request->name;
+        $product->price       = $request->price;
+        $product->parent_id   = $request->parent_id;
+        $product->description = $request->description;
+        $product->content     = $product->content;
+        $product->display     = $request->has('display') ? 1 : 0;
+        $product->created_at  = $request->created_at;
+        $product->save();
+        return redirect(url('admin/categories/'.$request->parent_id)); 
     }
 
     /**
@@ -105,7 +122,9 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $deletedProducts = Product::where('id', '=', $id)->delete();
-        return redirect(route('products.index')); 
+        $x = Product::find($id);
+        $parent_id = $x->parent_id;
+        $x->delete();
+        return redirect(url('admin/categories/'.$parent_id)); 
     }
 }

@@ -1,74 +1,116 @@
 
 
 <?php $__env->startSection("do-du-lieu"); ?>
-<link rel="stylesheet" type="text/css" href="<?php echo e(asset('backend/assets/css/product.css')); ?>">
+<link rel="stylesheet" type="text/css" href="<?php echo e(asset('backend/assets/css/category.css')); ?>">
 <div class="col-md-12">  
     <div class="panel panel-primary">
         <div class="panel-heading">
             <h1>Products</h1>
         </div>
         <div class="panel-body">
-        <form method="post" action="<?php echo e(route('products.store')); ?>" enctype="multipart/form-data">
+        <form method="post" action="<?php echo e($action); ?>" enctype="multipart/form-data">
             <?php echo csrf_field(); ?>
+            <?php if(isset($record)): ?>
+                <?php echo method_field('PUT'); ?>
+            <?php endif; ?>
             <!-- Name -->
             <div class="row mt-3">
                 <div class="col-md-1">Name</div>
                 <div class="col-md-8">
-                    <input type="text" value="<?php echo e(isset($record->name)?$record->name:''); ?>" name="name" class="form-control" required>
+                    <input type="text" 
+                        value="<?php echo e(isset($record->name) ? $record->name:''); ?>" 
+                        name="name" 
+                        class="form-control" 
+                        required
+                    >
                 </div>
             </div>
             <!-- Name end -->
 
-            <!-- Parent_id -->
-            <?php if(isset($data)): ?>
+            <!-- Display & price-->
             <div class="row mt-3">
-                <div class="col-md-1">Course</div>
+                <div class="col-md-1">Price</div>
                 <div class="col-md-3">
-                    <select class="custom-select" name="parent_id">
-                        <option selected></option>
-                        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $row): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <option value="1"><?php echo e($row->name); ?></option>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    <input type="text" 
+                        value="<?php echo e(isset($record->price) ? $record->price:''); ?>" 
+                        name="price" 
+                        class="form-control" 
+                        required
+                    >
+                </div>
+                <div class="col-md-1">Display</div>
+                <div class="col-md-1">
+                    <input type="checkbox" 
+                        class="form-check-input" 
+                        name="display"
+                        <?php if(isset($record->display)): ?>
+                            <?php if($record->display == 1): ?>
+                                checked
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    >
+                </div>
+            </div>
+            <!-- Display & price end-->
+
+            <!-- Parent_id-->
+            <div class="row mt-3">
+                <div class="col-md-1">Project</div>
+                <div class="col-md-4">
+                    <select class="form-select" aria-label=".form-select-lg example" name="parent_id">
+                      <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rows): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                          <option value="<?php echo e($rows->id); ?>" 
+                              <?php echo e(isset($record->parent_id) && ($rows->id==$record->parent_id) ? 'selected' : ''); ?>
+
+                           >
+                            <?php echo e($rows->name); ?>
+
+                           </option>
+                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </select>
                 </div>
             </div>
-            <?php endif; ?>
-            <!-- Parent_id end -->
-
-            <!-- Price & display -->
-            <div class="row mt-3">
-                <?php if(isset($data)): ?>
-                <div class="col-md-1">Price</div>
-                <div class="col-md-3">
-                    <input class="form-control" type="text" name="price" placeholder="VND" required>
-                </div>
-                <?php endif; ?>
-                <div class="col-md-1">Display</div>
-                <div class="col-md-1">
-                    <input type="checkbox" class="form-check-input" name="display">
-                </div>
-            </div>
-            <!-- Price & display end-->
-            
+            <!-- Parend_id end -->
+    
             <!-- Description -->
             <div class="row mt-3">
                 <div class="col-md-1">Descript</div>
                 <div class="col-md-7">
-                    <textarea class="form-control" name ="description" rows="4"></textarea>
+                    <textarea class="form-control" name ="description" rows="4">
+                    <?php echo e(isset($record->description) ? trim($record->description) : ''); ?>
+
+                    </textarea>
                 </div>
             </div>
             <!-- Description end -->
-            
+
+            <!-- Description -->
+            <div class="row mt-3">
+                <div class="col-md-1">Content</div>
+                <div class="col-md-7">
+                    <textarea class="form-control" name ="content" rows="4">
+                    <?php echo e(isset($record->content) ? trim($record->content) : ''); ?>
+
+                    </textarea>
+                </div>
+            </div>
+            <!-- Description end -->
+
             <!-- Created & updated -->
-            <?php if(isset($data)): ?>
+            <?php if(isset($record)): ?>
             <div class="row mt-3">
                 <div class="col-md-1">Created</div>
-                <div class="col-md-3">
-                    <input type="datetime-local" value="" name="created_at" class="form-control" required>
+                <div class="col-md-4">
+                    <input type="datetime-local" 
+                        value="<?php echo e(isset($record->created_at) ? date('Y-m-d\TH:i:s', strtotime($record->created_at)) : ''); ?>" 
+                        name="created_at" 
+                        class="form-control" 
+                        required
+                    >
                 </div>
                 <div class="col-md-1 ml-2">Updated</div>
-                <div class="col-md-3">
-                    <input type="datetime-local" value="" name="updated_at" class="form-control" required>
+                <div class="col-md-4">
+                    <input type="datetime-local" value="<?php echo e(isset($record->updated_at) ? date('Y-m-d\TH:i:s', strtotime($record->updated_at)) : ''); ?>" name="updated_at" class="form-control" disabled>
                 </div>
             </div>
             <?php endif; ?>
@@ -78,7 +120,7 @@
             <div class="row mt-3">
                 <div class="col-md-9"></div>
                 <div class="col-md-1">
-                    <a type="button" href="<?php echo e(route('products.index')); ?>" class="btn ml-3 btn_create_update">Cancel</a>
+                    <a type="button" href="<?php echo e(route('categories.index')); ?>" class="btn ml-3 btn_create_update">Cancel</a>
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn ml-3 btn_create_update">Save</button>

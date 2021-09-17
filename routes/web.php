@@ -35,11 +35,16 @@ Route::group(["prefix"=>"admin"], function() {
     // Users
     Route::resource('users', UsersController::class);
     Route::get('arrangeuser/{cate}/{type}',  [UsersController::class, 'arrangeUser'])
-        ->name('users.arrangeuser');    
+        ->name('users.arrangeuser'); 
+
     // Product
     Route::resource('products', ProductController::class);
+    Route::get('arrangeproduct/{cate_id}/{cate}/{type}',  [ProductController::class, 'arrangeProduct'])
+        ->name('products.arrangeproduct');
+
     Route::get('arrangecategory/{cate}/{type}',  [ProductController::class, 'arrangeCategory'])
         ->name('products.arrangecategory');
+        
     // Category
     Route::resource('categories', CategoryController::class);
     Route::get('arrangecategory/{cate}/{type}',  [CategoryController::class, 'arrangeCategory'])
