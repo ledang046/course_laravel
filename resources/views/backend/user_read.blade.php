@@ -53,3 +53,7 @@
 </div>
 
 @endsection
+
+@section('add-ajax')
+<script src="{{ asset('backend/assets/js/user.js') }}"></script>
+@endsection
