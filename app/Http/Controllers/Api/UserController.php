@@ -46,12 +46,11 @@ class UserController extends Controller
             $html .= '<td>'. $rows->address .'</td>';
             $html .= '<td>'. $rows->phone   .'</td>';
             $html .= '<td>';
-            $html .= '<form style="display:inline;" action="'.$action.'" method="POST">';
-            $html .=  '@csrf @method("DELETE")';
             $html .= '<a class="badge badge-complete" style="color:white;" href="'.$update_link.'">';
             $html .= '<i class="fas fa-pencil-alt"></i></a>';
-            $html .= '<button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i></button>';
-            $html .= '</form></td></tr>';
+            $html .= '<p id='. $rows->id .' style="background-color:gray;border:none;cursor:pointer;" class="badge">';
+            $html .= '<i class="fas fa-trash-alt"></i></p>';
+            $html .= '</td></tr>';
         }
         return $html;
     }

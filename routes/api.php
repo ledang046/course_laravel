@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,12 @@ use App\Http\Controllers\Api\UserController;
 |
 */
 
+// Products
 Route::apiResource('products', ProductController::class);
+
+// Category
+Route::get('categories', [CategoryController::class, 'index']);
+Route::get('categories/show/{id}', [CategoryController::class, 'show']);
 
 // Users
 Route::get('users', [UserController::class, 'index']);
