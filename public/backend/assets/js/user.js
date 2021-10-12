@@ -16,6 +16,11 @@ jQuery(document).ready(function($) {
     .error(function() {
         alert("fail");
     });
+     
+    function hello() {
+        alert("Hello");
+    }
+
     $('#arrange_id_asc').on('click', function(event) {
         $.ajax({
             url: 'http://localhost/course_laravel/public/api/arrangeuser/id/asc',
@@ -25,7 +30,7 @@ jQuery(document).ready(function($) {
         .success(function(data) {
             document.getElementById("test").innerHTML = data.html;
             console.log(data.status);
-        })
+        })  
         .error(function() {
             alert("fail");
         }); 

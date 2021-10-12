@@ -18,8 +18,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $data = User::orderBy("id","desc")->paginate(5);
-        return view('backend.user_read')->with(['data' => $data]);
+            $data = User::orderBy("id","desc")->paginate(5);
+            return view('backend.user_read')->with(['data' => $data]);
     }
 
     // Sắp xếp user theo name

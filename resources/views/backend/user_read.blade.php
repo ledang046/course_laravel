@@ -16,7 +16,7 @@
                                 Id
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                <p class="dropdown-item" id="arrange_id_asc">asc</p>
+                                <p class="dropdown-item" onclick="hello()">asc</p>
                                 <a class="dropdown-item" id="arrange_id_desc">desc</a>
                             </div>
                         </th>
