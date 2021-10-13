@@ -11,6 +11,9 @@ class Category extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product', 'parent_id');
+        return $this->hasMany('App\Models\Product', 'parent_id', 'id')
+                    ->where('display', '=', 1)
+                    ->limit(4)
+                    ->orderBy('id');
     }
 }

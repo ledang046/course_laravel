@@ -16,10 +16,6 @@ jQuery(document).ready(function($) {
     .error(function() {
         alert("fail");
     });
-     
-    function hello() {
-        alert("Hello");
-    }
 
     $('#arrange_id_asc').on('click', function(event) {
         $.ajax({
@@ -77,4 +73,9 @@ jQuery(document).ready(function($) {
             alert("fail");
         }); 
     });
+
+    $('#6').on('click', function(event) {
+        alert("hello");
+    });
+    
 });
