@@ -18,11 +18,13 @@ use App\Http\Controllers\Api\CategoryController;
 */
 
 // Products
-Route::apiResource('products', ProductController::class);
+// Route::apiResource('products', ProductController::class);
+Route::get('products/{id}', [ProductController::class, 'getCourse']);
 
 // Category
 Route::get('categories', [CategoryController::class, 'index']);
 Route::get('categories/show/{id}', [CategoryController::class, 'show']);
+Route::get('categories/{id}', [CategoryController::class, 'getAcategory']);
 
 // Users
 Route::get('users', [UserController::class, 'index']);

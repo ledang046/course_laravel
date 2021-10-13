@@ -29,6 +29,18 @@ class ProductController extends Controller
     {
         //
     }
+    
+    /**
+     * Lấy các khóa học thep parent_id
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getCourse($parent_id)
+    {
+        $courses = Product::where('parent_id', '=', $parent_id)->get();
+        return $courses;
+    }
 
     /**
      * Display the specified resource.

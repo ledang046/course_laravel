@@ -22,11 +22,20 @@ class CategoryController extends Controller
     }
 
     /**
-     * Lấy products theo category id
+     * Lấy 4 products theo category id để hiện thị trang home nổi bật 
      */
     public function show($id)
     {
         $data = Category::find($id)->products;
+        return $data;
+    }
+
+    /**
+     * Lấy tên category theo id
+     */
+    public function getAcategory($id)
+    {
+        $data = Category::find($id);
         return $data;
     }
 }
