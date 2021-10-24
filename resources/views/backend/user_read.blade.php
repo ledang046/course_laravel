@@ -3,7 +3,6 @@
 <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -32,6 +31,7 @@
                                             </div>
                                     </div>
                             </div>
+                            <div class="table-stats order-table ov-h">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered js-sort-table">
                                     <thead>
                                         <tr>
@@ -41,7 +41,7 @@
                                             <th>Email</th>
                                             <th>Address</th>
                                             <th>Phone</th>
-                                            <th>Gender</th>
+                                    
                                             <th></th>
                                         </tr>   
                                     </thead>
@@ -54,21 +54,23 @@
                                             <td>{{$rows->email}}</td>
                                             <td>{{$rows->address}}</td>
                                             <td>{{$rows->phone}}</td> 
+                
                                             <td>
-                                            </td>
-                                            <td>
-                                                <form style="display:inline;" action="{{ url('admin/user/'.$rows->id) }}" method="POST">
-                                                @csrf @method("DELETE")
-                                                <a class="badge badge-complete" style="color:black;" href="{{ url('admin/users/'.$rows->id.'/edit') }}">
-                                                <i class="fas fa-pencil-alt"></i></a>
-                                                <button style="border:none;cursor: pointer;" class="badge badge-complete" type="submit">
-                                                <i class="fas fa-trash-alt"></i></button>
-                                                </form>
+                                                <form style="display: inline;" action="{{ url('admin/users/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <a class="badge badge-complete" style="color:white;" href="{{ url('admin/users/'.$rows->id.'/edit') }}">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>
+                                                    </button>
+                                                </form>  
                                             </td>
                                         </tr>
                                        @endforeach
                                     </tbody>
                                 </table>
+                            </div>
                             </div>
                         </div>
                     </div>

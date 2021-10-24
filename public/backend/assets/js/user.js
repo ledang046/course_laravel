@@ -26,7 +26,7 @@ jQuery(document).ready(function($) {
         .success(function(data) {
             document.getElementById("test").innerHTML = data.html;
             console.log(data.status);
-        })
+        })  
         .error(function() {
             alert("fail");
         }); 
@@ -78,7 +78,4 @@ jQuery(document).ready(function($) {
         alert("hello");
     });
     
-
-    
-
 });
