@@ -36,9 +36,17 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCourse($parent_id)
+    public function getCourse(Request $request, $parent_id)
     {
-        $courses = Product::where('parent_id', '=', $parent_id)->get();
+        $name = $request->name;
+        $order = $request->order;
+        if($name == '' || $order == '') {
+            $name = 'id';
+            $order = 'asc';
+        }
+        $courses = Product::where('parent_id', '=', $parent_id)
+                        ->orderBy($name, $order)                
+                        ->get();
         return $courses;
     }
 

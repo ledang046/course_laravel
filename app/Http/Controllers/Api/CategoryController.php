@@ -13,10 +13,16 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if(isset($request->exceptId)) {
+            $x = $request->exceptId;
+        } else {
+            $x = '';
+        }
         $data = Category::select('id', 'name')
                         ->where('display', '=', 1)
+                        ->where('id', '!=', $x)
                         ->get();
         return $data;
     }
