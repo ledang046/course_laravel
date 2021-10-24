@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\NewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +31,11 @@ Route::get('categories/{id}', [CategoryController::class, 'getAcategory']);
 // Users
 Route::get('users', [UserController::class, 'index']);
 Route::get('arrangeuser/{cate}/{type}',  [UserController::class, 'arrangeUser']);
+
+// Banners
+Route::get('banners', [BannerController::class, 'index']);
+
+// News 
+Route::get('news/{number}', [NewController::class, 'index']);
+
+
