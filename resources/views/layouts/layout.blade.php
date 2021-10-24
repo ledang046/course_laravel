@@ -166,7 +166,7 @@
 
                     <div class="user-area dropdown float-right">
                         <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{asset('upload/users/'.Auth::user()->photo)}}" alt="Not Found" onerror=this.src="{{asset('backend/images/avatar/user.png')}}">
+                            <img class="user-avatar rounded-circle" src="{{asset('upload/users/'.Auth::user()->photo)}}" alt="Not Found" onerror=this.src="{{asset('upload/users/1.jpg')}}">
                         </a>
 
                         <div class="user-menu dropdown-menu">
