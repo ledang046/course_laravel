@@ -13,7 +13,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $data = News::orderBy("id","desc")->paginate(5);
+        $data = News::orderBy("id","desc")->get();
         return view('backend.new_read')->with(['data' => $data]);
     }
 

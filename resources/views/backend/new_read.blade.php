@@ -1,7 +1,6 @@
 @extends("layouts.layout")
 @section("do-du-lieu")
-<?php $i = 0; ?>
-<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/user.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/new.css') }}">
 <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
@@ -16,36 +15,16 @@
                                     </div>
                                 </div>
                             </div>
-                           
                             <div class="table-stats order-table ov-h">
-                                <table class="table ">
+                                <table id="datatablesSimple">
                                     <thead>
-                                        <tr>
-                                           	<th style="width: 50px;" class="serial" > 
-                                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Id
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                    <!-- <a class="dropdown-item" href="{{ url('admin/arrangeuser/id/asc') }}">asc</a>
-                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/id/desc') }}">desc</a> -->
-                                                </div>
-                                            </th>
+                                            <th>Id</th>
                                             <th>Photo</th>
-                                            <th style="width: 120px;">
-                                            <div class="dropdown">
-                                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Name
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                                    <!-- <a class="dropdown-item" href="{{ url('admin/arrangeuser/name/asc') }}">A-Z</a>
-                                                    <a class="dropdown-item" href="{{ url('admin/arrangeuser/name/desc') }}">Z-A</a> -->
-                                                </div>
-                                            </div>
-                                            </th>
+                                            <th>Name</th>
                                             <th>Description</th>
                                             <th>Content</th>
                                             <th>Display</th>
-                                            <th style="width:120px;"></th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,8 +38,8 @@
                                                 </div>
                                             </td>
                                             <td>{{ $rows->name}}</td>
-                                            <td><span>{{ $rows->description}}</span> </td>
-                                            <td> <span>{{ $rows->content}}</span> </td>
+                                            <td><p>{{ $rows->description}}</p> </td>
+                                            <td><p>{{ $rows->content}}</p> </td>
                                             <td>
                                                 <span>
                                                     @if($rows->display == 1)
@@ -90,12 +69,7 @@
                                 </table>
                             </div> <!-- /.table-stats -->
                         </div>
-                        <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                        {{ $data->links() }}
-
-                        </ul>
-                        </nav>
+                        
                     </div>
 
 @endsection
