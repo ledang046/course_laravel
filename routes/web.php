@@ -6,7 +6,10 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 // use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\NewsController;
+use App\Models\Discount;
+
 // use App\Http\Controllers\NewsController;
 
 /*
@@ -49,8 +52,12 @@ Route::group(["prefix"=>"admin"], function() {
     Route::resource('categories', CategoryController::class);
     Route::get('arrangecategory/{cate}/{type}',  [CategoryController::class, 'arrangeCategory'])
         ->name('products.arrangecategory');
+
     // New
     Route::resource('news', NewsController::class);
+    
+    // Discount
+    Route::resource('discounts', DiscountController::class);
 });
 
 

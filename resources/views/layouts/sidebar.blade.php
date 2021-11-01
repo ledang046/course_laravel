@@ -19,7 +19,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('news.index') }}">
+        <a href="{{ route('discounts.index') }}">
         <i class="menu-icon fas fa-tags"></i> Coupons 
         </a>
     </li>
@@ -28,5 +28,10 @@
         <i class="menu-icon fas fa-images"></i> Banners
         </a>
     </li>
-  
+    <li class="menu-title">Customers Management</li>
+    <li>
+        <a href="">
+        <i class="menu-icon fas fa-chart-bar"></i> Orders  
+        </a>
+    </li>
 </ul>
