@@ -109,5 +109,5 @@ class DiscountController extends Controller
         Discount::where('id', '=', $id)->delete();
 
         return redirect(route('discounts.index')); 
-    }
+    }   
 }
