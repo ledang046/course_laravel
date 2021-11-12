@@ -24,7 +24,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('news.index') }}">
+        <a href="{{ route('banners.index') }}">
         <i class="menu-icon fas fa-images"></i> Banners
         </a>
     </li>

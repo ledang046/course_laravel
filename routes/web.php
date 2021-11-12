@@ -1,6 +1,7 @@
 <?php
+
+use App\Http\Controllers\BannerController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Middleware\CheckLogin;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\NewsController;
-use App\Models\Discount;
+
 
 // use App\Http\Controllers\NewsController;
 
@@ -58,6 +59,9 @@ Route::group(["prefix"=>"admin"], function() {
     
     // Discount
     Route::resource('discounts', DiscountController::class);
+
+    // Banner
+    Route::resource('banners', BannerController::class);
 });
 
 
