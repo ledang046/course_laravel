@@ -15,6 +15,6 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return Banner::where('display', '=', 1)->get();
+        return Banner::where('display', '=', 1)->limit(3)->get();
     }
 }

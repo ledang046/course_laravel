@@ -13,6 +13,7 @@ class Category extends Model
     {
         return $this->hasMany('App\Models\Product', 'parent_id', 'id')
                     ->where('display', '=', 1)
+                    ->where('hot', '=', 1)
                     ->limit(4)
                     ->orderBy('id');
     }
