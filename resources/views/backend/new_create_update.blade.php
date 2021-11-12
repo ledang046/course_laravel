@@ -31,13 +31,12 @@
             </div>
             <!-- end rows -->
             <!-- rows -->
-             <div class="row" style="margin-top:5px;">
+            <div class="row" style="margin-top:5px;">
                 <div class="col-md-2">Content</div>
                 <div class="col-md-10">
                     <textarea name="content"><?php echo isset($record->content)?$record->content:''; ?></textarea>
                 </div>
                 <script type="text/javascript">CKEDITOR.replace("content");</script>
-               
             </div>
 
              <div class="row" style="margin-top:5px;">

@@ -1,5 +1,4 @@
 @extends("layouts.layout")
-
 @section("do-du-lieu")
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/category.css') }}">
 <div class="col-lg-12">

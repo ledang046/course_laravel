@@ -2,10 +2,12 @@
 
 @section("do-du-lieu")
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/category.css') }}">
+<script type="text/javascript" src="{{ asset('backend/ckeditor/ckeditor.js') }}"></script>
+
 <div class="col-md-12">  
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1>Products</h1>
+            <h1>Courses</h1>
         </div>
         <div class="panel-body">
         <form method="post" action="{{ $action }}" enctype="multipart/form-data">
@@ -73,7 +75,7 @@
             <!-- Description -->
             <div class="row mt-3">
                 <div class="col-md-1">Descript</div>
-                <div class="col-md-7">
+                <div class="col-md-10">
                     <textarea class="form-control" name ="description" rows="4">
                     {{ isset($record->description) ? trim($record->description) : '' }}
                     </textarea>
@@ -81,16 +83,17 @@
             </div>
             <!-- Description end -->
 
-            <!-- Description -->
+            <!-- Content -->
             <div class="row mt-3">
                 <div class="col-md-1">Content</div>
-                <div class="col-md-7">
-                    <textarea class="form-control" name ="content" rows="4">
-                    {{ isset($record->content) ? trim($record->content) : '' }}
+                <div class="col-md-10">
+                    <textarea name="content">
+                       <?php echo isset($record->content)?$record->content:''; ?>
                     </textarea>
                 </div>
+                <script type="text/javascript">CKEDITOR.replace("content");</script>
             </div>
-            <!-- Description end -->
+            <!-- Content end -->
 
             <!-- Created & updated -->
             @if(isset($record))
@@ -116,7 +119,13 @@
             <div class="row mt-3">
                 <div class="col-md-9"></div>
                 <div class="col-md-1">
-                    <a type="button" href="{{ route('categories.index') }}" class="btn ml-3 btn_create_update">Cancel</a>
+                    <a 
+                        type="button" 
+                        href="{{ route('categories.index') }}" 
+                        class="btn ml-3 btn_create_update"
+                    >
+                        Cancel
+                    </a>
                 </div>
                 <div class="col-md-1">
                     <button type="submit" class="btn ml-3 btn_create_update">Save</button>

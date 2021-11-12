@@ -62,10 +62,11 @@ class ProductController extends Controller
         $product->parent_id   = $request->parent_id;
         $product->price       = $request->price;
         $product->description = $request->description;
-        $product->content = $request->content;
+        $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
         $product->save();
         return redirect(url('admin/categories/'.$request->parent_id));
+        echo $request->content;
     }
 
     /**
@@ -107,7 +108,7 @@ class ProductController extends Controller
         $product->price       = $request->price;
         $product->parent_id   = $request->parent_id;
         $product->description = $request->description;
-        $product->content     = $product->content;
+        $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
         $product->created_at  = $request->created_at;
         $product->save();
