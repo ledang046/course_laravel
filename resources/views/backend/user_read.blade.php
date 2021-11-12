@@ -7,8 +7,11 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                Users Management
+                            <div class="row">
+                                    <div class="col-md-10">
+                                        <strong class="card-title" >Users manager</strong>
+                                    </div>
+                                </div>
                             </div>
                             <div class="card-body">
                             <div class="table-stats order-table ov-h">
