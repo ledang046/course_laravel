@@ -5,11 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
-// use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\NewsController;
-
+use App\Http\Controllers\OrderController;
+use App\Models\Order;
 
 // use App\Http\Controllers\NewsController;
 
@@ -62,6 +63,9 @@ Route::group(["prefix"=>"admin"], function() {
 
     // Banner
     Route::resource('banners', BannerController::class);
+
+    // Order
+    Route::resource('orders', OrderController::class);
 });
 
 

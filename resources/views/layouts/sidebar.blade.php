@@ -30,7 +30,7 @@
     </li>
     <li class="menu-title">Customers Management</li>
     <li>
-        <a href="">
+        <a href="{{ route('orders.index') }}">
         <i class="menu-icon fas fa-chart-bar"></i> Orders  
         </a>
     </li>
