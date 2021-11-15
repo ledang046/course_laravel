@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash as FacadesHash;
 class UsersController extends Controller
 {
     /**
-     * Hello world
+     * Tunrofff
      *
      * @return \Illuminate\Http\Response
      */
