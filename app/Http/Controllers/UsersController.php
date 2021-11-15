@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Hash as FacadesHash;
 class UsersController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * hehehe
      *
      * @return \Illuminate\Http\Response
      */
