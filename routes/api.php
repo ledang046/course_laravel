@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\NewController;
+use App\Http\Controllers\Api\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,9 @@ Route::get('banners', [BannerController::class, 'index']);
 
 // News 
 Route::get('news/{number}', [NewController::class, 'index']);
+
+// Customer 
+Route::post('register', [CustomerController::class, 'create']);
+Route::post('login', [CustomerController::class, 'login']);
 
 
