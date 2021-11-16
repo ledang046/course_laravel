@@ -24,6 +24,7 @@
                                             <th>Email</th>
                                             <th>Address</th>
                                             <th>Phone</th>
+                                            <th>Role</th>
                                             <th></th>
                                         </tr>   
                                     </thead>
@@ -36,6 +37,12 @@
                                             <td>{{$rows->email}}</td>
                                             <td>{{$rows->address}}</td>
                                             <td>{{$rows->phone}}</td> 
+                                            <td>@if($rows->role == 1)
+                                                Admin
+                                                @else
+                                                Staff
+                                                @endif
+                                            </td>
                                             <td>
                                             <form style="display:inline;" action="{{ url('admin/users/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                                 @csrf

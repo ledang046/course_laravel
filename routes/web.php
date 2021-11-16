@@ -36,9 +36,11 @@ Route::group(["prefix"=>"admin"], function() {
     // Route::get('home',function(){
     //     return view('backend.home');
     // });
-    
+    Route::get('/403',function() {
+        return view('backend.403');
+    });
     // Users
-    Route::resource('users', UsersController::class);
+    Route::resource('users', UsersController::class)->middleware('permission.checker:admin');
     Route::get('arrangeuser/{cate}/{type}',  [UsersController::class, 'arrangeUser'])
         ->name('users.arrangeuser'); 
 

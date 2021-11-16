@@ -5,7 +5,7 @@
     <li class="menu-title">Data Management</li>
     <li>
         <a href="{{ route('users.index') }}">
-            <i class="menu-icon fas fa-users"></i>Users 
+            <i class="menu-icon fas fa-users"></i> Users 
         </a>
     </li>
     <li>
@@ -32,6 +32,11 @@
     <li>
         <a href="{{ route('orders.index') }}">
         <i class="menu-icon fas fa-chart-bar"></i> Orders  
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('orders.index') }}">
+        <i class="menu-icon fas fa-users"></i> Customers  
         </a>
     </li>
 </ul>

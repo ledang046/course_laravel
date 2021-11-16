@@ -17,7 +17,7 @@ class UserController extends Controller
     {
         $user_list = User::all();
         $html = $this->ajax($user_list);
-        return (["html" => $html, "status" => "200 OK"]);
+        return (["html" => $html, "status" => "200 OK"]); 
     }
 
     /**

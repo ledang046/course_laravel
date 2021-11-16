@@ -31,10 +31,10 @@
                                         @foreach($data as $rows)
                                         <tr>
                                             <td>{{$rows->id}}</td>
-                                            <td>{{$rows->product_id}}</td>
-                                            <td>{{$rows->customer_id}}</td>
-                                            <td>{{$rows->discount_id}}</td>
-                                            <td>{{$rows->price}}</td>
+                                            <td>{{$rows->product->name}}</td>
+                                            <td>{{$rows->customer->name}}</td>
+                                            <td>{{$rows->discount->name}}</td>
+                                            <td>{{number_format($rows->price)}}đ</td>
                                             <td>{{$rows->date}}</td> 
                                             <td>
                                             <form style="display:inline;" action="{{ url('admin/orders/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >

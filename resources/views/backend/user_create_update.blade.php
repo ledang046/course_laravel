@@ -44,6 +44,21 @@
                     <input type="text" value="{{ isset($record->address)?$record->address:'' }}" name="address" class="form-control" required>
                 </div>
             </div>
+            
+            <div class="row" style="margin-top:5px;">
+                <div class="col-md-2">Role</div>
+                <div class="col-md-10">
+                    <select name="role" class="form-control" required>
+                        <option  selected hidden value="{{ isset($record->role)?$record->role:'' }}">@if($record->role == 1) Admin 
+                                @else Staff
+                                @endif 
+                        </option>
+                        <option value="1">Admin</option>
+                        <option value="0">Staff</option>
+                    </select>
+                </div>
+            </div>
+
               <div class="row" style="margin-top:5px;">
                 <div class="col-md-2">Upload image</div>
                 <div class="col-md-10">

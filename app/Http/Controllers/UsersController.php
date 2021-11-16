@@ -92,6 +92,7 @@ class UsersController extends Controller
             }
         $users->address = $request->address;
         $users->phone = $request->phone;
+        $users->role = $request->role;
            if($request->photo != ''){        
             $path = public_path().'/upload/users/';
           //code for remove old file

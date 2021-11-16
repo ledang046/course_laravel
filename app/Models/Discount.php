@@ -14,4 +14,8 @@ class Discount extends Model
         'name','code','time','number','condition'
     ];
     protected $table = 'discounts';
+    public function orders()
+    {
+        return $this->hasMany(Order::class,'discount_id');
+    }
 }
