@@ -23,7 +23,7 @@ class CustomerController extends Controller
 
     public function create(Request $request) {
         $customer              = new Customer();
-        $customer->name        = " ";
+        $customer->name        = $request->name;
         $customer->email       = $request->email;
         $customer->username    = $request->username;
         $customer->password    = Hash::make($request->password);
@@ -47,6 +47,5 @@ class CustomerController extends Controller
             }
         }
         return (["status" => "500"]);
-        
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\NewController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ use App\Http\Controllers\Api\CustomerController;
 // Products
 // Route::apiResource('products', ProductController::class);
 Route::get('products/{id}', [ProductController::class, 'getCourse']);
+Route::get('product/{id}', [ProductController::class, 'getACourse']);
 
 // Category
 Route::get('categories', [CategoryController::class, 'index']);
@@ -42,5 +44,8 @@ Route::get('news/{number}', [NewController::class, 'index']);
 // Customer 
 Route::post('register', [CustomerController::class, 'create']);
 Route::post('login', [CustomerController::class, 'login']);
+
+// Order 
+Route::post('order/store', [OrderController::class, 'store']);
 
 
