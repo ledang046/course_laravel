@@ -68,6 +68,7 @@ Route::group(["prefix"=>"admin"], function() {
 
     // Order
     Route::resource('orders', OrderController::class);
+    Route::get('/changestatus/{id}',[OrderController::class,'changeStatus']);
 
     // Customer
     Route::resource('customers', CustomerController::class);
