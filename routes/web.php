@@ -7,9 +7,11 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DiscountController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\OrderController;
+use App\Models\Customer;
 use App\Models\Order;
 
 // use App\Http\Controllers\NewsController;
@@ -33,9 +35,7 @@ Route::get('/logout', function() {
 
 Route::group(["prefix"=>"admin"], function() {
     Route::get('/', [App\Http\Controllers\HomeController::class,'index'])->name('home');
-    // Route::get('home',function(){
-    //     return view('backend.home');
-    // });
+
     Route::get('/403',function() {
         return view('backend.403');
     });
@@ -68,6 +68,10 @@ Route::group(["prefix"=>"admin"], function() {
 
     // Order
     Route::resource('orders', OrderController::class);
+    Route::get('/changestatus/{id}',[OrderController::class,'changeStatus']);
+
+    // Customer
+    Route::resource('customers', CustomerController::class);
 });
 
 

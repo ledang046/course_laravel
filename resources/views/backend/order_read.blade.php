@@ -24,6 +24,7 @@
                                             <th>Discount Code</th>
                                             <th>Price</th>
                                             <th>Date</th>
+                                            <th>Status</th>
                                             <th></th>
                                         </tr>   
                                     </thead>
@@ -36,6 +37,14 @@
                                             <td>{{$rows->discount->name}}</td>
                                             <td>{{number_format($rows->price)}}đ</td>
                                             <td>{{$rows->date}}</td> 
+                                            <td>
+                                                @if($rows->status == 1)
+                                                <span class="badge rounded-pill bg-success">Successful</span>
+                                                @else
+                                                <a href="{{ url('admin/changestatus/'.$rows->id) }}"><span class="badge rounded-pill bg-danger">Pending</span></a>
+                                                    
+                                                @endif
+                                            </td>
                                             <td>
                                             <form style="display:inline;" action="{{ url('admin/orders/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                                 @csrf

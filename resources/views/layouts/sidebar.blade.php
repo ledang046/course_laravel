@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav">
     <li class="active">
-        <a href="index.html"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
+        <a href="{{ route('home') }}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
     </li>
     <li class="menu-title">Data Management</li>
     <li>
@@ -35,7 +35,7 @@
         </a>
     </li>
     <li>
-        <a href="{{ route('orders.index') }}">
+        <a href="{{ route('customers.index') }}">
         <i class="menu-icon fas fa-users"></i> Customers  
         </a>
     </li>

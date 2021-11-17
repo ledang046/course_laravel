@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Http\Requests\UserValidate;
-use DB;
-use Hash;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 
 class UsersController extends Controller

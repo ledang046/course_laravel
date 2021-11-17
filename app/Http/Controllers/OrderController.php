@@ -18,7 +18,11 @@ class OrderController extends Controller
             ->paginate(5);
         return view('backend.order_read', ["data" => $data]);
     }
-
+    public function changeStatus($id)
+    {
+        Order::where('id', $id)->update(['status' => 1]);
+        return redirect()->back();
+    }
     /**
      * Show the form for creating a new resource.
      *
