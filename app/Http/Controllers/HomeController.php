@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 class HomeController extends Controller
 {
     /**
@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('backend.home');
+        $customer = DB::table('customers')->get();
+        $product = DB::table("products")->get();
+        $order = DB::table('orders')->get();
+        $price = DB::table('orders')->sum('price');
+        return view('backend.home',['customer' => $customer,'order' => $order, 'price'=>$price,'product'=>$product]);
     }
 }

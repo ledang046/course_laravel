@@ -13,7 +13,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-text"><span class="count">{{number_format($price)}}</span>đ</div>
                                             <div class="stat-heading">Revenue</div>
                                         </div>
                                     </div>
@@ -31,7 +31,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text"><span class="count">{{$order->count()}}</span></div>
                                             <div class="stat-heading">Sales</div>
                                         </div>
                                     </div>
@@ -49,8 +49,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
-                                            <div class="stat-heading">Templates</div>
+                                            <div class="stat-text"><span class="count">{{$product->count()}}</span></div>
+                                            <div class="stat-heading">Courses</div>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text"><span class="count">{{$customer->count()}}</span></div>
                                             <div class="stat-heading">Clients</div>
                                         </div>
                                     </div>
