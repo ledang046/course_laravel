@@ -31,6 +31,7 @@
                                 </div>
                             </div>
                         </th>
+                        <th>Photo</th>
                         <th>
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,6 +72,11 @@
                     @foreach($data as $rows)
                     <tr>
                         <td>{{ $rows->id }}</td>
+                        <td>
+                            <div>
+                                <a href="#"><img style="max-width: 125px;" src="{{asset('upload/products/'.$rows->photo)}}" alt=""></a>
+                            </div>
+                        </td>
                         <td>{{ $rows->name }}</td>
                         <td>
                             @if($rows->display == 1)

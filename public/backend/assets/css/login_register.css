@@ -8,7 +8,7 @@
 }
 /*Login*/
 body {
-	background-color: lightgray;
+	background-color: #00c292;
 }
 .body {
 	padding-bottom: 50px;
@@ -17,12 +17,12 @@ input.text {
    height: 50px;
 }
 input.btn_login {
-   background-color: darkgray;
+   background-color: #00c292;
    color: white;
    font-size: 20px;
    padding: 5px 30px;
    font-family: Gilroy-Light;
-   border-radius: 0px;
+   border-radius: 10px;
 }
 .forgot_pass {
    color: black;

@@ -94,7 +94,12 @@
                 <script type="text/javascript">CKEDITOR.replace("content");</script>
             </div>
             <!-- Content end -->
-
+            <div class="row mt-3">
+                <div class="col-md-1">Upload</div>
+                <div class="col-md-10">
+                    <input type="file" name="photo">
+                </div>
+             </div>
             <!-- Created & updated -->
             @if(isset($record))
             <div class="row mt-3">
