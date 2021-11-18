@@ -3,6 +3,7 @@
 @section("do-du-lieu")
 <link rel="stylesheet" type="text/css" href="{{ asset('backend/assets/css/category.css') }}">
 <div class="col-lg-12">
+<input onclick="history.go(-1);" type="button" value="Back" class="btn btn-danger mb-4">
     <div class="card">
         <div class="card-header">
             <div class="row">

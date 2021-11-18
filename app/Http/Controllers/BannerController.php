@@ -68,7 +68,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-       
+        $record = Banner::where("id","=",$id)->first();
+        return view("backend.banner_create_update",["record"=>$record]);
     }
 
     /**
@@ -80,7 +81,24 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $banners = Banner::find($id);
+        //update name
+        $banners->name = $request->name;
+        $banners->display = isset($request->display) != "" ? 1 : 0;
+           if($request->photo != ''){        
+            $path = public_path().'/upload/banners/';
+          //code for remove old file
+          if($banners->photo != '' && $banners->photo != null){
+               unlink($path.$banners->photo);
+          }
+          //upload new file
+          $image = $request->file('photo');
+          $storedPath = $image->move('upload/banners', $image->getClientOriginalName());
+          $banners->photo = $image->getClientOriginalName();
+
+        }
+        $banners->save();
+        return redirect(url("admin/banners"));
     }
 
     /**
