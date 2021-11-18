@@ -65,6 +65,7 @@
                                 </div>
                             </div>
                         </th>
+                        <th>Discount</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -87,6 +88,9 @@
                         </td>
                         <td>
                             {{ number_format($rows->price) }} VND
+                        </td>
+                        <td>
+                            {{ number_format($rows->discount) }} %
                         </td>
                         <td>
                             <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >

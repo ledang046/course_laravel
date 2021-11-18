@@ -115,6 +115,7 @@ class ProductController extends Controller
         $product->price       = $request->price;
         $product->parent_id   = $request->parent_id;
         $product->description = $request->description;
+        $product->discount    = $request->discount;
         $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
         $product->created_at  = $request->created_at;
