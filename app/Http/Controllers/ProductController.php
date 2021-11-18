@@ -64,6 +64,13 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
+        if (!$request->hasFile('photo')) {
+            $product->photo = '';
+          } else {
+            $image = $request->file('photo');
+            $storedPath = $image->move('upload/products', $image->getClientOriginalName());
+            $product->photo = $image->getClientOriginalName();
+          }
         $product->save();
         return redirect(url('admin/categories/'.$request->parent_id));
         echo $request->content;
@@ -108,9 +115,22 @@ class ProductController extends Controller
         $product->price       = $request->price;
         $product->parent_id   = $request->parent_id;
         $product->description = $request->description;
+        $product->discount    = $request->discount;
         $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
         $product->created_at  = $request->created_at;
+        if($request->photo != ''){        
+            $path = public_path().'/upload/products/';
+          //code for remove old file
+          if($product->photo != '' && $product->photo != null){
+               unlink($path.$product->photo);
+          }
+          //upload new file
+          $image = $request->file('photo');
+          $storedPath = $image->move('upload/products', $image->getClientOriginalName());
+          $product->photo = $image->getClientOriginalName();
+
+        }
         $product->save();
         return redirect(url('admin/categories/'.$request->parent_id)); 
     }

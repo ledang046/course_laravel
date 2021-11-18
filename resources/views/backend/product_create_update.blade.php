@@ -53,6 +53,20 @@
                     >
                 </div>
             </div>
+
+            <!-- Discount -->
+            <div class="row mt-3">
+                <div class="col-md-1">Discount</div>
+                <div class="col-md-8">
+                    <input type="text" 
+                        value="{{ isset($record->discount) ? $record->discount:'' }}" 
+                        name="discount" 
+                        class="form-control" 
+                        required
+                    >
+                </div>
+            </div>
+            <!-- End discount -->
             <!-- Display & price end-->
 
             <!-- Parent_id-->
@@ -94,7 +108,12 @@
                 <script type="text/javascript">CKEDITOR.replace("content");</script>
             </div>
             <!-- Content end -->
-
+            <div class="row mt-3">
+                <div class="col-md-1">Upload</div>
+                <div class="col-md-10">
+                    <input type="file" name="photo">
+                </div>
+             </div>
             <!-- Created & updated -->
             @if(isset($record))
             <div class="row mt-3">

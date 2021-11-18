@@ -5,7 +5,7 @@
 @endsection
 
 @section('title_logo')
-<i class="fas fa-user"></i>
+<img src="{{asset('backend/images/logo1.png')}}" alt="Logo">
 @endsection
 
 @section('content')

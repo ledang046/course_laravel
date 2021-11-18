@@ -31,6 +31,7 @@
                                 </div>
                             </div>
                         </th>
+                        <th>Photo</th>
                         <th>
                             <div class="dropdown">
                                 <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -64,6 +65,7 @@
                                 </div>
                             </div>
                         </th>
+                        <th>Discount</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -71,6 +73,11 @@
                     @foreach($data as $rows)
                     <tr>
                         <td>{{ $rows->id }}</td>
+                        <td>
+                            <div>
+                                <a href="#"><img style="max-width: 125px;" src="{{asset('upload/products/'.$rows->photo)}}" alt=""></a>
+                            </div>
+                        </td>
                         <td>{{ $rows->name }}</td>
                         <td>
                             @if($rows->display == 1)
@@ -81,6 +88,9 @@
                         </td>
                         <td>
                             {{ number_format($rows->price) }} VND
+                        </td>
+                        <td>
+                            {{ number_format($rows->discount) }} %
                         </td>
                         <td>
                             <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
