@@ -23,6 +23,7 @@ input.btn_login {
    padding: 5px 30px;
    font-family: Gilroy-Light;
    border-radius: 10px;
+   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .forgot_pass {
    color: black;
