@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\NewController;
 use App\Http\Controllers\Api\CustomerController;
 use App\Http\Controllers\Api\OrderController;
+use App\Http\Controllers\Api\DiscountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,8 @@ Route::post('login', [CustomerController::class, 'login']);
 
 // Order 
 Route::post('order/store', [OrderController::class, 'store']);
+
+// Order 
+Route::get('discount/{code}', [DiscountController::class, 'getDiscoutPrice']);
 
 
