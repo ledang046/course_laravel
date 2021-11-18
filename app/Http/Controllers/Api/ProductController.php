@@ -51,6 +51,18 @@ class ProductController extends Controller
     }
 
     /**
+     * Lấy 1 khóa học theo id
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getACourse($id)
+    {
+        $course = Product::find($id);
+        return $course;
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id
