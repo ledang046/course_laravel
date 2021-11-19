@@ -41,6 +41,7 @@ Route::get('banners', [BannerController::class, 'index']);
 
 // News 
 Route::get('news/{number}', [NewController::class, 'index']);
+Route::get('newslist', [NewController::class, 'getNews']);
 
 // Customer 
 Route::post('register', [CustomerController::class, 'create']);

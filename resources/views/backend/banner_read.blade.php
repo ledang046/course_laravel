@@ -32,7 +32,7 @@
 											<td>{{ $rows->id}}.</td>
                                             <td>
                                                 <div>
-                                                    <a href="#"><img style="max-width: 125px;" src="{{asset('upload/news/'.$rows->photo)}}" alt=""></a>
+                                                    <a href="#"><img style="max-width: 125px;" src="{{asset('upload/banners/'.$rows->photo)}}" alt=""></a>
                                                 </div>
                                             </td>
                                             <td>{{ $rows->name}}</td>
@@ -47,10 +47,10 @@
                                             </td>
                                             <td>
 
-                                            <form style="display: inline;" action="{{ url('admin/news/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
+                                            <form style="display: inline;" action="{{ url('admin/banners/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                                 @csrf
                                                 @method('DELETE')          
-                                                    <a class="badge badge-complete" style="color:white;" href="{{ url('admin/news/'.$rows->id.'/edit') }}">
+                                                    <a class="badge badge-complete" style="color:white;" href="{{ url('admin/banners/'.$rows->id.'/edit') }}">
                                                     <i class="fas fa-pencil-alt"></i>
                                                    </a>
                                                 <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>
