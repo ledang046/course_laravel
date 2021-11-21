@@ -28,8 +28,20 @@ class NewController extends Controller
      */
     public function getNews(Request $request)
     {
+        $type = $request->type;
+        $order = $request->order;
         return News::where('display', '=', 1)
-                        ->orderBy('created_at', 'desc')
+                        ->orderBy($type, $order)
                         ->paginate(4);
+    }
+
+    /**
+     * Lấy 1 bản ghi trong news
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getNew($id)
+    {
+        return News::find($id);
     }
 }
