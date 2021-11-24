@@ -5,7 +5,7 @@
 <div class="col-md-12">  
     <div class="panel panel-primary">
         <div class="panel-heading">
-            <h1>Categories</h1>
+            <h1>Coupons</h1>
         </div>
         <div class="panel-body">
         <form method="post" action="{{ $action }}" enctype="multipart/form-data">
@@ -55,12 +55,10 @@
                 <div class="col-md-1">Condition</div>
                 <div class="col-md-8">
                    <select name="condition">
-                       <option value="selected hidden value="{{ isset($record->condition) }}">
-                        @if($record->condition == 1)
-                        Percent discount (%) 
-                        @else
-                        Price discount ($)
-                        @endif
+                       <option selected hidden value="{{ isset($record->condition)?$record->condition:'' }}">
+                            @if($record->condition == 1) Discount by % 
+                            @else Discount by $
+                            @endif 
                        </option>
                        <option value="1">Discount by %</option>
                        <option value="2">Discount by $</option>

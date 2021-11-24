@@ -45,7 +45,7 @@
                                                 @if($rows->condition == 1)
                                                 Discount {{$rows->number}}%
                                                 @else
-                                                {{$rows->number}}$ Off
+                                                Dicount  {{$rows->number}} VNĐ
                                                 @endif
                                             </td>
                                             <td>
