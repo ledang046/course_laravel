@@ -29,15 +29,17 @@ class CustomerController extends Controller
         $customer->password    = Hash::make($request->password);
         $customer->address     = $request->address;
         $customer->phonenumber = $request->phonenumber;
-        if($request->gender == "male") {
+        if($request->gender == "Male") {
             $customer->gender = 1;
-        } else if($request->gender == "female") {
+        } else if($request->gender == "Female") {
             $customer->gender = 0;
         } else {
             $customer->gender = 2;
         }
         $customer->save();
-        return (["status" => "200"]);
+        return ([
+            "status"   => "200"
+        ]);
     }
     public function login(Request $request) {
         $customers = Customer::all();
