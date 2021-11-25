@@ -38,14 +38,14 @@
                                                 @if($rows->condition == 1)
                                                 Percent discount (%) 
                                                 @else
-                                                Price discount ($)
+                                                Price discount (VNĐ)
                                                 @endif
                                             </td>
                                             <td>
                                                 @if($rows->condition == 1)
                                                 Discount {{$rows->number}}%
                                                 @else
-                                                {{$rows->number}}$ Off
+                                                Dicount  {{$rows->number}} VNĐ
                                                 @endif
                                             </td>
                                             <td>

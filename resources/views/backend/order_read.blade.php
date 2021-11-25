@@ -34,7 +34,12 @@
                                             <td>{{$rows->id}}</td>
                                             <td>{{$rows->product->name}}</td>
                                             <td>{{$rows->customer->name}}</td>
-                                            <td>{{$rows->discount->name}}</td>
+                                            <td>@if($rows->discount_id == 0)
+                                                none
+                                                @else 
+                                                {{$rows->discount->name}}
+                                                @endif
+                                            </td>
                                             <td>{{number_format($rows->price)}}đ</td>
                                             <td>{{$rows->date}}</td> 
                                             <td>
@@ -63,12 +68,13 @@
                             </div>
                             </div>
                         </div>
-                    </div>
-                    <nav aria-label="Page navigation example">
+                        <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
                             {{$data->links()}}
                         </ul>
                     </nav>
+                    </div>
+                   
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->

@@ -16,44 +16,14 @@
             </div>
         </div>
         <div class="table-stats order-table ov-h">
-            <table class="table ">
+            <table id="datatablesSimple">
                 <thead>
                     <tr>
-                       	<th>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Id
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/id/asc') }}">Asc</a>
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/id/desc') }}">Desc</a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Name
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/name/asc') }}">A-Z</a>
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/name/desc') }}">Z-A</a>
-                                </div>
-                            </div>
-                        </th>
-                        <th>
-                            <div class="dropdown">
-                                <button class="btn dropdown-toggle btn_arrange" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Display
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/display/desc') }}">Display</a>
-                                    <a class="dropdown-item" href="{{ url('admin/arrangecategory/display/asc') }}">Undisplayed</a>
-                                </div>
-                            </div>
-                        </th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Display</th>
                         <th></th>
-                    </tr>
+                    </tr>   
                 </thead>
                 <tbody>
                     @foreach($data as $rows)
@@ -94,11 +64,4 @@
     </nav>
 </div>
 @endsection
-
-@section('add-ajax')
-<script type="text/javascript" language="javascript">
-    
-</script>
-@endsection
-
 
