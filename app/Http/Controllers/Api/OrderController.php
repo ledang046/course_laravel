@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Jobs\SendEmail;
 
 class OrderController extends Controller
 {
@@ -31,8 +32,24 @@ class OrderController extends Controller
         $order->customer_id = $request->customer_id;
         $order->discount_id = $request->discount_id;
         $order->price       = $request->price;
-        $order->save();
-        return (["status" => "200"]);
+
+        if($order->save()) {
+            $customerEmail = $order->customer->email;
+            $message = [
+                'type' => 'Register successsfully',
+                'content' => 'Welcome to KOURSES, from Team 13 with love <3!',
+            ];
+            SendEmail::dispatch($message, $customerEmail)->delay(now()->addMinute(1));
+
+            return [
+                "status" => "200",
+                "email"  => $customerEmail
+            ];
+        } else {
+            return [
+                "status" => "500"
+            ];
+        }
     }
     
     /**
