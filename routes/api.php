@@ -50,6 +50,8 @@ Route::post('login', [CustomerController::class, 'login']);
 
 // Order 
 Route::post('order/store', [OrderController::class, 'store']);
+Route::get('get-order/{id}', [OrderController::class, 'getOrder']);
+Route::delete('delete-order/{id}', [OrderController::class, 'destroy']);
 
 // Order 
 Route::get('discount/{code}', [DiscountController::class, 'getDiscoutPrice']);
