@@ -1,6 +1,8 @@
 <div>
    <h2>{{ $data['type'] }}</h2>
-   <p>{{ $data['content'] }}</p>
+   <p>{{ $data['content'] }} - Team 13</p>
    <h1 style="color:#20c997;">Welcomes to KOURSES</h1>
-   <a href="https://genk.vn/"></a>
+   <p>Your course: {{ $data['productName'] }}</p>
+   <p>Total: {{ $data['orderPrice'] }}</p>
+   <p>Time: 2 & 4 & 6</p>
 </div>

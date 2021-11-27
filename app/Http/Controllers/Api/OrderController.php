@@ -35,9 +35,13 @@ class OrderController extends Controller
 
         if($order->save()) {
             $customerEmail = $order->customer->email;
+            $productName   = $order->product->name;
+            $orderPrice    = $order->price;
             $message = [
                 'type' => 'Register successsfully',
                 'content' => 'Welcome to KOURSES, from Team 13 with love <3!',
+                'productName' => $productName,
+                'orderPrice'  => $orderPrice
             ];
             SendEmail::dispatch($message, $customerEmail)->delay(now()->addMinute(1));
 
