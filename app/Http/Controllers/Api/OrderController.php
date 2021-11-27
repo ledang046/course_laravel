@@ -57,23 +57,22 @@ class OrderController extends Controller
     }
     
     /**
-     * Lấy các khóa học thep parent_id
+     * Lấy các order theo id user
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function getCourse(Request $request, $parent_id)
+    public function getOrder($id)
     {
-        $name = $request->name;
-        $order = $request->order;
-        if($name == '' || $order == '') {
-            $name = 'id';
-            $order = 'asc';
+        $orderList = Order::where('customer_id', '=', $id)->get();
+        foreach($orderList as $order) {
+            $order->productId = $order->product->id;
+            $order->productName = $order->product->name;
         }
-        $courses = Order::where('parent_id', '=', $parent_id)
-                        ->orderBy($name, $order)                
-                        ->get();
-        return $courses;
+        return [
+            'status'     => "200",
+            'listObject' => $orderList
+        ];
     }
 
     /**
@@ -119,6 +118,9 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Order::where('id', '=', $id)->delete();
+        return [
+            'status' => '200'
+        ]; 
     }
 }
