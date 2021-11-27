@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use File;
 
 class ProductController extends Controller
 {
@@ -16,10 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data = Product::where('parent_id', '=', 0)
-            ->select('id', 'name', 'display')
-            ->orderBy("id","desc")
-            ->paginate(5);
+        $data = Product::orderBy("id","desc")->paginate(5);
         return view('backend.product_read', ["data" => $data]);
     }
 
@@ -28,14 +26,6 @@ class ProductController extends Controller
      *
      * return data được sắp xếp
      */
-    public function arrangeProduct($cate_id, $cate, $type)
-    {
-        $data = Product::where('parent_id', '=', $cate_id)
-            ->select('id', 'name', 'display', 'price')
-            ->orderBy($cate,$type)
-            ->paginate(5);
-        return view('backend.product_read', ["data" => $data, "id" => $cate_id]);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -64,11 +54,15 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
+        $product->hot         = $request->has('hot') ? 1 : 0;
         if (!$request->hasFile('photo')) {
             $product->photo = '';
           } else {
+            $destinationPath = public_path('upload/products/');
+            $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';  
             $image = $request->file('photo');
             $storedPath = $image->move('upload/products', $image->getClientOriginalName());
+            File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
             $product->photo = $image->getClientOriginalName();
           }
         $product->save();
@@ -118,6 +112,7 @@ class ProductController extends Controller
         $product->discount    = $request->discount;
         $product->content     = $request->content;
         $product->display     = $request->has('display') ? 1 : 0;
+        $product->hot         = $request->has('hot') ? 1 : 0;
         $product->created_at  = $request->created_at;
         if($request->photo != ''){        
             $path = public_path().'/upload/products/';
@@ -126,9 +121,12 @@ class ProductController extends Controller
                unlink($path.$product->photo);
           }
           //upload new file
-          $image = $request->file('photo');
-          $storedPath = $image->move('upload/products', $image->getClientOriginalName());
-          $product->photo = $image->getClientOriginalName();
+            $destinationPath = public_path('upload/products/');
+            $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';  
+            $image = $request->file('photo');
+            $storedPath = $image->move('upload/products', $image->getClientOriginalName());
+            File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
+            $product->photo = $image->getClientOriginalName();
 
         }
         $product->save();

@@ -48,9 +48,8 @@ class NewsController extends Controller
           $destinationPath = public_path('upload/news/');
           $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';
           $image = $request->file('photo');
-          $storedAdminPath = $image->move('upload/news', $image->getClientOriginalName());
+          $storedPath = $image->move('upload/news', $image->getClientOriginalName());
           File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
-        //   $storedUserPath = $image->move('D:\Xampp\htdocs\fe_course_laravel\src\assets\images', $image->getClientOriginalName());
           $news->photo = $image->getClientOriginalName();
         }
         $news->save();
@@ -102,8 +101,11 @@ class NewsController extends Controller
                unlink($path.$news->photo);
           }
           //upload new file
+          $destinationPath = public_path('upload/news/');
+          $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';
           $image = $request->file('photo');
           $storedPath = $image->move('upload/news', $image->getClientOriginalName());
+          File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
           $news->photo = $image->getClientOriginalName();
 
         }
