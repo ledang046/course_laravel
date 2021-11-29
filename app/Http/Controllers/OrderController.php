@@ -14,7 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data = Order::orderBy("id","desc")
+        $data = Order::orderBy("status","asc")
             ->paginate(5);
         return view('backend.order_read', ["data" => $data]);
     }

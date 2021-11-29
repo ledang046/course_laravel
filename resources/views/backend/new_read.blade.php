@@ -45,7 +45,7 @@
                                 @endif
                             </span>
                         </td>
-                        <td>
+                        <td style="width: 100px;">
 
                         <form style="display: inline;" action="{{ url('admin/news/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                             @csrf

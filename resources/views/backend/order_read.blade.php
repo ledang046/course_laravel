@@ -54,9 +54,6 @@
                                             <form style="display:inline;" action="{{ url('admin/orders/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                                                 @csrf
                                                 @method('DELETE')
-                                                <a class="badge badge-complete" style="color:white;" href="{{ url('admin/orders/'.$rows->id.'/edit') }}">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
                                                 <button style="background-color:gray;border:none;cursor:pointer;" class="badge badge-complete" type="submit"><i class="fas fa-trash-alt"></i>
                                                 </button>
                                             </form>  
