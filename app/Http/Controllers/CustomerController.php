@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -83,6 +84,7 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         Customer::where('id', '=', $id)->delete();
+        Order::where('customer_id','=',$id)->delete();
         return redirect(route('customers.index')); 
     }
 }

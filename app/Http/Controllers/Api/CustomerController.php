@@ -36,10 +36,16 @@ class CustomerController extends Controller
         } else {
             $customer->gender = 2;
         }
-        $customer->save();
-        return ([
-            "status"   => "200"
-        ]);
+        if($customer->save()) {
+            $customer1 = Customer::where('email', '=', $customer->email)->first();
+            return [
+                "status"   => "200",
+                "customer" => $customer1
+            ];
+        }
+        return [
+            "status" => "500"
+        ];
     }
     public function login(Request $request) {
         $customers = Customer::all();
@@ -49,5 +55,18 @@ class CustomerController extends Controller
             }
         }
         return (["status" => "500"]);
+    }
+    public function editPassword(Request $request) {
+        $customer = Customer::find($request->id);
+        if(Hash::check($request->oldPassword, $customer->password)) {
+            $customer1           = Customer::find($request->id);
+            $customer1->password = Hash::make($request->newPassword);
+            if($customer1->save()) {
+                return [
+                    "status" => "200"
+                ];
+            } 
+        }
+        return ["status" => "500"];
     }
 }
