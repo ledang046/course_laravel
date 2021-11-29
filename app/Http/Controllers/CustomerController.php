@@ -14,7 +14,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $data = Customer::orderBy("id","asc")->paginate(5);
+        $data = Customer::orderBy("id","asc")->get();
 
         return view('backend.customer_read', ["data" => $data]);
     }
@@ -83,6 +83,6 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         Customer::where('id', '=', $id)->delete();
-        return redirect(route('customusers.index')); 
+        return redirect(route('customers.index')); 
     }
 }

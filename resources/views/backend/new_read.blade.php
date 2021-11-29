@@ -21,6 +21,7 @@
                         <th>Id</th>
                         <th>Photo</th>
                         <th>Name</th>
+                        <th>Description</th>
                         <th>Display</th>
                         <th></th>
                     </tr>
@@ -35,7 +36,8 @@
                                 <a href="#"><img style="max-width: 125px;" src="{{asset('upload/news/'.$rows->photo)}}" alt=""></a>
                             </div>
                         </td>
-                        <td>{{ $rows->name}}</td>
+                        <td><p class="name"> {{$rows->name}}</p></td>
+                        <td><p class="name"> {{$rows->description}}</p></td>
                         <td>
                             <span>
                                 @if($rows->display == 1)

@@ -17,3 +17,9 @@
  	background-color: #00c292;
  	color: white;
 }
+.name{
+	width: 200px;
+    overflow: hidden;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+}
