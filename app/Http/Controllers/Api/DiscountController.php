@@ -29,6 +29,9 @@ class DiscountController extends Controller
     public function getDiscoutPrice($userid, $code)
     {
         $price = Discount::where('code', '=', $code)->first();
+        if($price == null) {
+            return ['status' => 500];
+        }
         $check = Order::where('customer_id', '=', $userid)
                       ->where('discount_id', '=', $price->id)
                       ->get();
