@@ -21,6 +21,7 @@
                         <th>Id</th>
                         <th>Photo</th>
                         <th>Name</th>
+                        <th>Description</th>
                         <th>Display</th>
                         <th></th>
                     </tr>
@@ -35,7 +36,8 @@
                                 <a href="#"><img style="max-width: 125px;" src="{{asset('upload/news/'.$rows->photo)}}" alt=""></a>
                             </div>
                         </td>
-                        <td>{{ $rows->name}}</td>
+                        <td><p class="name"> {{$rows->name}}</p></td>
+                        <td><p class="name"> {{$rows->description}}</p></td>
                         <td>
                             <span>
                                 @if($rows->display == 1)
@@ -45,7 +47,7 @@
                                 @endif
                             </span>
                         </td>
-                        <td>
+                        <td style="width: 100px;">
 
                         <form style="display: inline;" action="{{ url('admin/news/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >
                             @csrf

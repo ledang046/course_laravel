@@ -52,6 +52,18 @@
                         @endif
                     >
                 </div>
+                <div class="col-md-1">Hot</div>
+                <div class="col-md-1">
+                    <input type="checkbox" 
+                        class="form-check-input" 
+                        name="hot"
+                        @if(isset($record->hot))
+                            @if($record->hot == 1)
+                                checked
+                            @endif
+                        @endif
+                    >
+                </div>
             </div>
 
             <!-- Discount -->

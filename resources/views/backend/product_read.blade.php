@@ -8,7 +8,7 @@
         <div class="card-header">
             <div class="row">
                 <div class="col-md-10">
-                    <strong class="card-title" >Course manager</strong>
+                    <strong class="card-title" >Product manager</strong>
                 </div>
                 <div class="col-md-2 text-right">
                     <a class="btn-add py-1 px-3" href="{{ route('products.create') }}">
@@ -27,6 +27,7 @@
                         <th>Display</th>
                         <th>Price</th>
                         <th>Discount</th>
+                        <th>Hot</th>
                         <th></th>
                     </tr>   
                 </thead>
@@ -52,6 +53,13 @@
                         </td>
                         <td>
                             {{ number_format($rows->discount) }} %
+                        </td>
+                        <td>
+                            @if($rows->hot == 1)
+                                <i class="fas fa-check ml-3" style="color:green"></i>
+                            @else
+                                <i class="fas fa-times ml-3" style="color:red"></i>
+                            @endif
                         </td>
                         <td>
                             <form style="display: inline;" action="{{ url('admin/products/'.$rows->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete?');" >

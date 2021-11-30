@@ -14,8 +14,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data = Order::orderBy("id","desc")
-            ->paginate(5);
+        $data = Order::orderBy("status","asc")->orderBy("id","desc")->get();
         return view('backend.order_read', ["data" => $data]);
     }
     public function changeStatus($id)
@@ -86,6 +85,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orders = Order::find($id);
+        $orders->delete();
+        return redirect(url('admin/orders'));
     }
 }

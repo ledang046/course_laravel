@@ -45,6 +45,7 @@ class ProductController extends Controller
             $order = 'asc';
         }
         $courses = Product::where('parent_id', '=', $parent_id)
+                        ->where('display', '=', '1')
                         ->orderBy($name, $order)                
                         ->get();
         return $courses;

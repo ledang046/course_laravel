@@ -47,6 +47,7 @@ Route::get('newslist', [NewController::class, 'getNews']);
 // Customer 
 Route::post('register', [CustomerController::class, 'create']);
 Route::post('login', [CustomerController::class, 'login']);
+Route::put('edit-password', [CustomerController::class, 'editPassword']);
 
 // Order 
 Route::post('order/store', [OrderController::class, 'store']);

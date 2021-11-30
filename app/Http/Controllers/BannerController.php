@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use App\Models\Banner;
+use File;
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
@@ -13,7 +14,7 @@ class BannerController extends Controller
     public function index()
     {
         $data = Banner::orderBy("id","desc")
-            ->paginate(5);
+            ->get();
         return view('backend.banner_read', ["data" => $data]);
     }
     /**
@@ -41,8 +42,11 @@ class BannerController extends Controller
         if (!$request->hasFile('photo')) {
           $banners->photo = '';
         } else {
+          $destinationPath = public_path('upload/banners/');
+          $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';    
           $image = $request->file('photo');
           $storedPath = $image->move('upload/banners', $image->getClientOriginalName());
+          File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
           $banners->photo = $image->getClientOriginalName();
         }
         $banners->save();
@@ -92,8 +96,11 @@ class BannerController extends Controller
                unlink($path.$banners->photo);
           }
           //upload new file
+          $destinationPath = public_path('upload/banners/');
+          $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';    
           $image = $request->file('photo');
           $storedPath = $image->move('upload/banners', $image->getClientOriginalName());
+          File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
           $banners->photo = $image->getClientOriginalName();
 
         }

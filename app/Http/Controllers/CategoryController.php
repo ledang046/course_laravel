@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $data = Category::find($id)->products()->paginate(5);
+        $data = Category::find($id)->products1()->paginate(5);
         return view('backend.product_read', ["data" => $data, "id" => $id]);
     }
 

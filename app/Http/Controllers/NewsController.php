@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\News;
+use File;
 class NewsController extends Controller
 {
     /**
@@ -44,8 +45,11 @@ class NewsController extends Controller
         if (!$request->hasFile('photo')) {
           $news->photo = '';
         } else {
+          $destinationPath = public_path('upload/news/');
+          $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';
           $image = $request->file('photo');
           $storedPath = $image->move('upload/news', $image->getClientOriginalName());
+          File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
           $news->photo = $image->getClientOriginalName();
         }
         $news->save();
@@ -97,8 +101,11 @@ class NewsController extends Controller
                unlink($path.$news->photo);
           }
           //upload new file
+          $destinationPath = public_path('upload/news/');
+          $newPath = 'D:\Xampp\htdocs\fe_course_laravel\src\assets\images/';
           $image = $request->file('photo');
           $storedPath = $image->move('upload/news', $image->getClientOriginalName());
+          File::copy($destinationPath.$image->getClientOriginalName(), $newPath.$image->getClientOriginalName());
           $news->photo = $image->getClientOriginalName();
 
         }

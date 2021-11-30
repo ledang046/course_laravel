@@ -59,11 +59,7 @@
                             </div>
                         </div>
                     </div>
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-center">
-                            {{$data->links()}}
-                        </ul>
-                    </nav>
+                    
                 </div>
             </div><!-- .animated -->
         </div><!-- .content -->
