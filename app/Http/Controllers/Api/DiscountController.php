@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Discount;
+use App\Models\Order;
 
 class DiscountController extends Controller
 {
@@ -25,12 +26,15 @@ class DiscountController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function getDiscoutPrice($code)
+    public function getDiscoutPrice($userid, $code)
     {
-        $price = Discount::where('code', '=', $code)->select('number', 'condition', 'id')->first();
-        if($price == null) {
-            return ['status' => 500];
-        } 
+        $price = Discount::where('code', '=', $code)->first();
+        $check = Order::where('customer_id', '=', $userid)
+                      ->where('discount_id', '=', $price->id)
+                      ->get();
+        if(count($check) > 0) {
+            return ['status' => 200, 'price' => null];
+        }
         return ['status' => 200, 'price' => $price];
     }
 }

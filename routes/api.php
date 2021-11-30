@@ -54,6 +54,6 @@ Route::get('get-order/{id}', [OrderController::class, 'getOrder']);
 Route::delete('delete-order/{id}', [OrderController::class, 'destroy']);
 
 // Order 
-Route::get('discount/{code}', [DiscountController::class, 'getDiscoutPrice']);
+Route::get('discount/{userid}/{code}', [DiscountController::class, 'getDiscoutPrice']);
 
 
